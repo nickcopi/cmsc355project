@@ -1,0 +1,51 @@
+User Stories & Scenarios
+
+1. As a player with some specific item I want to get money when I click the item’s sell button so that I can buy upgrades.
+    Given I press the sell button when I have an item to sell then the appropriate amount of them are sold and money goes up.
+    Given I press the sell button when I have no items to sell then nothing happens.
+    Given I press the sell button for an item when I have sales upgrades unlocked then I should get bonus money.
+
+2. As a player with some money I want to be able to tap upgrades to unlock them so that I can make more money.
+    Given I press the upgrade button when I have money then I should unlock the upgrade.
+    Given I press the upgrade button when I don’t have money then I should not unlock the upgrade and be told.
+    Given I press the upgrade button when I have money then a new upgrade should unlock.
+
+3. As a player that is moving I want to harvest items I collide with so that I have things to sell.
+    Given I collide with an item when I am on top of it then it should go in my inventory.
+    Given I collide with an item when I have harvesting upgrades unlocked then I should harvest extra of it.
+    Given I collide with an item when I am on top of it then it should be cleared from the screen.
+    
+4. As a player that controls the character when I swipe I want to change directions so that I do not get stuck in one place
+    Given I want to change directions when I swipe in any direction then I go in that direction
+    Given I swipe in a direction when I am already going that direction then nothing happens 
+    Given I am stuck on a wall when I swipe away then I get off the wall
+
+5. As a player looking to play the game in portrait view I want the game to be locked in portrait view so that my screen does not rotate
+    Given I rotate my phone in either direction when the app is open then the screen does not rotate
+    Given I look at the game on another device when I cast my screen to it then the screen is still in portrait view
+    Given I try to force the screen into landscape view when use another app to try and force it to change then the app stays in portrait view
+
+6. As a player looking to easier harvest items I want to become larger when I buy a size upgrade so that I can make more money.
+    Given I press the size upgrade when I have money then my size increases by the upgrades amount.
+    Given I press the size upgrade when my size is at maximum then my size doesn’t change and no money is taken.
+    Given I press the size upgrade when I have money and my size is about to be maximum then my size increases to maximum and the upgrade path locks.
+
+7. As a player looking to more quickly harvest items I want to move faster when I buy a speed upgrade so that I can make more money.
+    Given I press the speed upgrade when I have money then my speed increases by the upgrades amount.
+    Given I press the speed upgrade when my speed is at maximum then my speed doesn’t change and no money is taken, as well as no upgrades locked.
+    Given I press the speed upgrade when I have money and my speed is about to be maximum then my size increases to maximum adn the upgrade path locks
+
+8. As a player that wants to make more money with less effort I want to be able to be able to unlock an auto move so that I can make money while not interacting with the game directly.
+    Given I press the automove upgrade when I can afford it then I am able to enter and exit automode at will by double tapping the game area.
+    Given I am in automove mode when the player collides with a wall then the game does its best to get it off of the wall.
+    Given I am in automove mode when the game area is double tapped then automove mode is disabled.
+
+9. As a player that sees accomplishment in time I want to be able to see how long I’ve been playing when I unlock the time upgrade.
+    Given I press the time unlock upgrade when I can afford it then the time becomes displayed on the game activity.
+    Given I do not have the time upgrade unlocked when I view the game activity then it does not display the time.
+    Given I read the time when I am on the game menu then it is accurate for how long I have been playing.
+
+10. As a player seeking fun I want to be able to access menus so that I can play the game.
+    Given I am on the upgrade menu when I press the back button then I am put back to the game activity.
+    Given I am on the game activity when I hit the upgrade menu then I am sent to the upgrade menu.
+    Given I am on the start menu when I hit the start button then I am sent to the game activity.
