@@ -1,5 +1,11 @@
 User Stories & Scenarios
 
+Etry Gaugau
+Nick Copi
+Troy Lamphere
+Derrick McGlone
+Hunter Frostick
+
 1. As a player with some specific item I want to get money when I click the item’s sell button so that I can buy upgrades.
     Given I press the sell button when I have an item to sell then the appropriate amount of them are sold and money goes up.
     Given I press the sell button when I have no items to sell then nothing happens.
