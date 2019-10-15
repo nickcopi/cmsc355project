@@ -29,6 +29,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
     private int height = 480, width = 480;  //defaults incase not set yet.
     public Rect myRect;
     float scale;
+    Player player = new Player();
 
     SurfaceView mSurfaceView;
     String TAG = "AllinOneActivity";
@@ -47,7 +48,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
 
 
         //get a generic surface and all our callbacks to it, with a touchlistener.
-        mSurfaceView =   findViewById(R.id.surfaceView); //new SurfaceView(this);
+        mSurfaceView = findViewById(R.id.surfaceView); //new SurfaceView(this);
         mSurfaceView.getHolder().addCallback(this);
         mSurfaceView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -56,13 +57,25 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
                 // Retrieve the new x and y touch positions
                 int touchx = (int) event.getX();
                 int touchy = (int) event.getY();
-                if (myRect.contains(touchx, touchy)) {
-                    //handle touch event
+                int xDiff = Math.abs(touchx - player.getX());
+                int yDiff = Math.abs(touchy - player.getY());
+                if (xDiff > yDiff) {
+                    if (touchx > player.getX()) {
+                        player.setDirection(Player.Directions.RIGHT);
+                    } else {
+                        player.setDirection(Player.Directions.LEFT);
+                    }
+                } else {
+                    if (touchy > player.getY()) {
+                        player.setDirection(Player.Directions.DOWN);
+                    } else {
+                        player.setDirection(Player.Directions.UP);
+                    }
                 }
                 return true;
             }
-        });
 
+        });
     }
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
@@ -85,7 +98,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
         Paint brush = new Paint();
         brush.setColor(Color.rgb(0xff,0xf0,0xff));
         //brush.setStyle(Paint.Style.STROKE);
-        c.drawRect(200,200,300,300,brush);
+        c.drawRect(player.getX(),player.getY(),player.getX()+player.getWidth(),player.getY()+player.getHeight(),brush);
 
     }
 
@@ -159,6 +172,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
                     }
                 }
                 //handle the game updates
+                player.move();
 
                 //sleep for a short period of time.
                 if (!Running) return;  //don't sleep, just exit if we are done.
