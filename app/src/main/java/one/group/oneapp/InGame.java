@@ -19,8 +19,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
-import java.util.Random;
-
 
 public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
     private final int UPGRADE_MENU = 1;
@@ -30,7 +28,6 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
     public int x, y;
     private int height = 480, width = 480;  //defaults incase not set yet.
     public Rect myRect;
-    private Random myRand = new Random();
     float scale;
 
     SurfaceView mSurfaceView;
