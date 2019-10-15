@@ -2,6 +2,7 @@ package one.group.oneapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_in_game);
         //setup everything needed.
         //load a picture and draw it onto the screen.
         scale = getResources().getDisplayMetrics().density; //this gives me the scale value for a mdpi baseline of 1.
@@ -48,7 +50,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
 
 
         //get a generic surface and all our callbacks to it, with a touchlistener.
-        mSurfaceView = new SurfaceView(this);
+        mSurfaceView =   findViewById(R.id.surfaceView); //new SurfaceView(this);
         mSurfaceView.getHolder().addCallback(this);
         mSurfaceView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -63,7 +65,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
                 return true;
             }
         });
-        setContentView(mSurfaceView);
+
     }
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
@@ -86,7 +88,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
         Paint brush = new Paint();
         brush.setColor(Color.rgb(0xff,0xf0,0xff));
         //brush.setStyle(Paint.Style.STROKE);
-        c.drawRect(0,0,100,100,brush);
+        c.drawRect(200,200,300,300,brush);
 
     }
 
