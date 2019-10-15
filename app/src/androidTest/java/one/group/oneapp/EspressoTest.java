@@ -29,10 +29,23 @@ public class EspressoTest {
 
     @Test
     public void testPlayButton() {
-         onView(withId(R.id.play)).perform(click());
+        onView(withId(R.id.play)).perform(click());
 
-        onView(withId(R.id.upgrade)).check(matches(withText("Upgrade Menu")));
+        onView(withId(R.id.upgrade)).check(matches(withId(R.id.upgrade)));
+    }
+    @Test
+    public void testUpgradeMenuButton() {
+        onView(withId(R.id.play)).perform(click());
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.back)).check(matches(withId(R.id.back)));
     }
 
+    @Test
+    public void testBackButton() {
+        onView(withId(R.id.play)).perform(click());
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        onView(withId(R.id.upgrade)).check(matches(withId(R.id.upgrade)));
+    }
 
 }
