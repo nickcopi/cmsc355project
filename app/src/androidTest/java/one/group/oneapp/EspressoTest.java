@@ -89,7 +89,7 @@ public class EspressoTest {
     public void testMoveRight() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(400,300));
+        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX()+100,ingame.getPlayer().getY()));
         assertEquals(Player.Directions.RIGHT,ingame.getPlayer().getDirection());
     }
     //Given I tap west of the player, when I am in game, then the player starts moving right
