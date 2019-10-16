@@ -114,6 +114,7 @@ public class EspressoTest {
 
 
 
+    //code yoinked from https://stackoverflow.com/questions/39438575/android-espresso-how-do-i-perform-touch-events
     public static ViewAction touchDownAndUp(final float x, final float y) {
         return new ViewAction() {
             @Override
