@@ -51,6 +51,10 @@ public class Player {
         return height;
     }
 
+    public Directions getDirection() {
+        return direction;
+    }
+
     public void setDirection(Directions direction) {
         this.direction = direction;
     }

@@ -25,7 +25,6 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
 
     private myThread thread;
     public Paint black;
-    public int x, y;
     private int height = 480, width = 480;  //defaults incase not set yet.
     public Rect myRect;
     float scale;
@@ -57,6 +56,7 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
                 // Retrieve the new x and y touch positions
                 int touchx = (int) event.getX();
                 int touchy = (int) event.getY();
+                Log.w(TAG,"X: " + touchx + " Y: " + touchy);
                 int xDiff = Math.abs(touchx - player.getX());
                 int yDiff = Math.abs(touchy - player.getY());
                 if (xDiff > yDiff) {
@@ -89,6 +89,10 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
 
             }
         }
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void draw(Canvas c) {
@@ -154,7 +158,6 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
         @Override
         public void run() {
             Canvas c;
-            x = 10;
             while (Running && !Thread.interrupted()) {
                 c = null;
                 try {
