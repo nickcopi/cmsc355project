@@ -1,6 +1,6 @@
 package one.group.oneapp;
 
-public class Player {
+public class Player implements Collidable{
     private int x,y,width,height;
     private double speed;
     private Directions direction;
