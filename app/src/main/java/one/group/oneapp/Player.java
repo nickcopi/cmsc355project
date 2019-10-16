@@ -12,7 +12,7 @@ public class Player {
     }
     public Player(){
         this.x = 250;
-        this.y = 250;
+        this.y = 400;
         this.height = 100;
         this.width = 100;
         this.speed = 5;

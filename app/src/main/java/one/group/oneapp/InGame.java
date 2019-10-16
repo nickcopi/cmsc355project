@@ -17,16 +17,16 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.Window;
+import android.view.WindowManager;
 
 
-
-public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
+public class InGame extends Activity implements SurfaceHolder.Callback{
     private final int UPGRADE_MENU = 1;
 
     private myThread thread;
     public Paint black;
     private int height = 480, width = 480;  //defaults incase not set yet.
-    public Rect myRect;
     float scale;
     Player player = new Player();
 
@@ -36,12 +36,11 @@ public class InGame extends AppCompatActivity implements SurfaceHolder.Callback{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_in_game);
         //setup everything needed.
-        //load a picture and draw it onto the screen.
         scale = getResources().getDisplayMetrics().density; //this gives me the scale value for a mdpi baseline of 1.
-        //scale up the alien, so it bigger for dp
-        myRect = new Rect();
 
         black = new Paint();  //default is black and we really are not using it.  need it to draw the alien.
 
