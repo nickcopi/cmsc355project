@@ -49,19 +49,26 @@ public class EspressoTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
 
+    /*
+    * As a player seeking fun I want to be able to access menus so that I can play the game. #8
+    * */
+
+
+    //Given I am on the start menu when I hit the start button then I am sent to the game activity.
     @Test
     public void testPlayButton() {
         onView(withId(R.id.play)).perform(click());
 
         onView(withId(R.id.upgrade)).check(matches(withId(R.id.upgrade)));
     }
+    //Given I am on the game activity when I hit the upgrade menu then I am sent to the upgrade menu.
     @Test
     public void testUpgradeMenuButton() {
         onView(withId(R.id.play)).perform(click());
         onView(withId(R.id.upgrade)).perform(click());
         onView(withId(R.id.back)).check(matches(withId(R.id.back)));
     }
-
+    //Given I am on the upgrade menu when I press the back button then I am put back to the game activity.
     @Test
     public void testBackButton() {
         onView(withId(R.id.play)).perform(click());
@@ -69,6 +76,15 @@ public class EspressoTest {
         onView(withId(R.id.back)).perform(click());
         onView(withId(R.id.upgrade)).check(matches(withId(R.id.upgrade)));
     }
+
+
+
+    /*
+     *As a player that controls the character when I swipe I want to change directions so that I can control which way I move #10
+     *
+     * */
+
+    //Given I tap east of the player, when I am in game, then the player starts moving right
     @Test
     public void testMoveRight() {
         onView(withId(R.id.play)).perform(click());
@@ -76,6 +92,7 @@ public class EspressoTest {
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(400,300));
         assertEquals(Player.Directions.RIGHT,ingame.getPlayer().getDirection());
     }
+    //Given I tap west of the player, when I am in game, then the player starts moving right
     @Test
     public void testMoveLeft() {
         onView(withId(R.id.play)).perform(click());
@@ -83,6 +100,7 @@ public class EspressoTest {
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX()-100,ingame.getPlayer().getY()));
         assertEquals(Player.Directions.LEFT,ingame.getPlayer().getDirection());
     }
+    //Given I tap below the player, when I am in game, then the player starts moving down
     @Test
     public void testMoveDown() {
         onView(withId(R.id.play)).perform(click());
@@ -90,6 +108,7 @@ public class EspressoTest {
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(),ingame.getPlayer().getY()+100));
         assertEquals(Player.Directions.DOWN,ingame.getPlayer().getDirection());
     }
+    //Given I tap above the player, when I am in game, then the player starts moving up
     @Test
     public void testMoveUp() {
         onView(withId(R.id.play)).perform(click());
