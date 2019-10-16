@@ -3,6 +3,7 @@ package one.group.oneapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Application;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
@@ -21,9 +22,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-public class InGame extends Activity implements SurfaceHolder.Callback{
+public class InGame extends Activity implements SurfaceHolder.Callback {
     private final int UPGRADE_MENU = 1;
-
+    private int activityReferences = 0;
+    private boolean isActivityChangingConfigurations = false;
     private myThread thread;
     public Paint black;
     private int height = 480, width = 480;  //defaults incase not set yet.
@@ -32,6 +34,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback{
 
     SurfaceView mSurfaceView;
     String TAG = "AllinOneActivity";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,18 @@ public class InGame extends Activity implements SurfaceHolder.Callback{
 
         });
     }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        if(thread != null) thread.interrupt();
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(thread != null) thread.run();
+    }
+
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
         startActivityForResult(intent, UPGRADE_MENU);
