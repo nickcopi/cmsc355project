@@ -111,7 +111,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     }
 
     public void draw(Canvas c) {
-
+        if(c == null) return;
         c.drawColor(Color.BLACK);
         //c.drawBitmap(alien, null, myRect, black);
         Paint brush = new Paint();
@@ -167,6 +167,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         }
 
         public void setRunning(boolean run) {
+
+
             Running = run;
         }
 

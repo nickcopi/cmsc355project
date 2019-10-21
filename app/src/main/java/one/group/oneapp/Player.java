@@ -19,6 +19,10 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 //    private int screenHeight;
 
     private int x,y,width,height;
+    private static final int minX = 0;
+    private static final int minY = 300;
+    private static final int maxX = 1050;
+    private static final int maxY = 1750;
     private double speed;
     private Directions direction;
     public enum Directions{
@@ -29,7 +33,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
     }
     public Player(){
         this.x = 250;
-        this.y = 400;
+        this.y = 700;
         this.height = 100;
         this.width = 100;
         this.speed = 5;
@@ -50,6 +54,10 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
                 this.y += this.speed;
                 break;
         }
+        if(this.x < this.minX) this.x = this.minX;
+        if(this.y < this.minY) this.y = this.minY;
+        if(this.x + this.getWidth() > this.maxX) this.x = this.maxX - this.getWidth();
+        if(this.y + this.getHeight() > this.maxY) this.y = this.maxY - this.getHeight();
     }
 
     public int getX() {

@@ -117,6 +117,66 @@ public class EspressoTest {
         assertEquals(Player.Directions.UP,ingame.getPlayer().getDirection());
     }
 
+    //As a player I want to not go off the games map so that I can continue to play the game.
+
+
+    //Given I hit the right side of the play area, when I am moving, then I stop.
+    @Test
+    public void testRightBarrier() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setDirection(Player.Directions.RIGHT);
+        for(int i = 0;i<1000;i++){
+            ingame.player.move();
+        }
+        int oldX = ingame.player.getX();
+        ingame.player.move();
+        assertEquals(oldX,ingame.player.getX());
+    }
+
+    //Given I hit the left side of the play area, when I am moving, then I stop.
+    @Test
+    public void testLeftBarrier() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setDirection(Player.Directions.LEFT);
+        for(int i = 0;i<1000;i++){
+            ingame.player.move();
+        }
+        int oldX = ingame.player.getX();
+        ingame.player.move();
+        assertEquals(oldX,ingame.player.getX());
+    }
+
+    //Given I hit the bottom of the play area, when I am moving, then I stop.
+    @Test
+    public void testBottomBarrier() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setDirection(Player.Directions.DOWN);
+        for(int i = 0;i<1000;i++){
+            ingame.player.move();
+        }
+        int oldY = ingame.player.getY();
+        ingame.player.move();
+        assertEquals(oldY,ingame.player.getY());
+    }
+    //Given I hit the top of the play area, when I am moving, then I stop.
+    @Test
+    public void testTopBarrier() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setDirection(Player.Directions.UP);
+        for(int i = 0;i<1000;i++){
+            ingame.player.move();
+        }
+        int oldY = ingame.player.getY();
+        ingame.player.move();
+        assertEquals(oldY,ingame.player.getY());
+    }
+
+
+
     public Activity getActivityInstance(){
         getInstrumentation().runOnMainSync(new Runnable() {
             public void run() {
