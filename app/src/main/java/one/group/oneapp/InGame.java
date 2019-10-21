@@ -30,7 +30,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     public Paint black;
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
-    private ArrayList<Collidable> plants = new ArrayList<Collidable>();
+    private HarvestableManager harvestableManager = new HarvestableManager();
     private Player player = new Player();
 
     SurfaceView mSurfaceView;
@@ -119,6 +119,11 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         brush.setColor(Color.rgb(0xff,0xf0,0xff));
         //brush.setStyle(Paint.Style.STROKE);
         c.drawRect(player.getX(),player.getY(),player.getX()+player.getWidth(),player.getY()+player.getHeight(),brush);
+        brush.setColor(Color.rgb(0x00,0x00,0xff));
+        for(Collidable item: harvestableManager.getPlants()) {
+            c.drawRect(item.getX(),item.getY(),item.getX()+item.getWidth(),item.getY()+item.getHeight(),brush);
+
+        }
 
     }
 
@@ -194,6 +199,11 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 }
                 //handle the game updates
                 player.move();
+                for(Collidable item: harvestableManager.getPlants()){
+                    if(PhysicsManager.collides(item,player)){
+                        harvestableManager.removePlant(item);
+                    }
+                }
 
                 //sleep for a short period of time.
                 if (!Running) return;  //don't sleep, just exit if we are done.
