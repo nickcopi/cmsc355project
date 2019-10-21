@@ -195,7 +195,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 //sleep for a short period of time.
                 if (!Running) return;  //don't sleep, just exit if we are done.
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000/60);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
 
