@@ -127,11 +127,11 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.RIGHT);
         for(int i = 0;i<1000;i++){
-            ingame.player.move();
+            ingame.getPlayer().move();
         }
-        int oldX = ingame.player.getX();
-        ingame.player.move();
-        assertEquals(oldX,ingame.player.getX());
+        int oldX = ingame.getPlayer().getX();
+        ingame.getPlayer().move();
+        assertEquals(oldX,ingame.getPlayer().getX());
     }
 
     //Given I hit the left side of the play area, when I am moving, then I stop.
@@ -141,11 +141,11 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.LEFT);
         for(int i = 0;i<1000;i++){
-            ingame.player.move();
+            ingame.getPlayer().move();
         }
-        int oldX = ingame.player.getX();
-        ingame.player.move();
-        assertEquals(oldX,ingame.player.getX());
+        int oldX = ingame.getPlayer().getX();
+        ingame.getPlayer().move();
+        assertEquals(oldX,ingame.getPlayer().getX());
     }
 
     //Given I hit the bottom of the play area, when I am moving, then I stop.
@@ -155,11 +155,11 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.DOWN);
         for(int i = 0;i<1000;i++){
-            ingame.player.move();
+            ingame.getPlayer().move();
         }
-        int oldY = ingame.player.getY();
-        ingame.player.move();
-        assertEquals(oldY,ingame.player.getY());
+        int oldY = ingame.getPlayer().getY();
+        ingame.getPlayer().move();
+        assertEquals(oldY,ingame.getPlayer().getY());
     }
     //Given I hit the top of the play area, when I am moving, then I stop.
     @Test
@@ -168,11 +168,11 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.UP);
         for(int i = 0;i<1000;i++){
-            ingame.player.move();
+            ingame.getPlayer().move();
         }
-        int oldY = ingame.player.getY();
-        ingame.player.move();
-        assertEquals(oldY,ingame.player.getY());
+        int oldY = ingame.getPlayer().getY();
+        ingame.getPlayer().move();
+        assertEquals(oldY,ingame.getPlayer().getY());
     }
 
 

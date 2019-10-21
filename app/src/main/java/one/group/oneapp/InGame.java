@@ -21,19 +21,20 @@ import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+
 
 public class InGame extends Activity implements SurfaceHolder.Callback {
     private final int UPGRADE_MENU = 1;
-    private int activityReferences = 0;
-    private boolean isActivityChangingConfigurations = false;
     private myThread thread;
     public Paint black;
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
-    Player player = new Player();
+    private ArrayList<Collidable> plants = new ArrayList<Collidable>();
+    private Player player = new Player();
 
     SurfaceView mSurfaceView;
-    String TAG = "AllinOneActivity";
+    String TAG = "InGame";
 
 
 
