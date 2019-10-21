@@ -6,14 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".UpgradeMenu">
 
+
+    <Button
+        android:id="@+id/SpeedButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Speed 1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/SizeButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Size 1"
+        app:layout_constraintStart_toStartOf="@+id/SpeedButton"
+        app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
+
+    <Button
+        android:id="@+id/HarvestButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Harvest 1"
+        app:layout_constraintStart_toStartOf="@+id/SizeButton"
+        app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
+
+    <Button
+        android:id="@+id/SalesButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Sales 1"
+        app:layout_constraintStart_toStartOf="@+id/HarvestButton"
+        app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
+
+    <Button
+        android:id="@+id/AutomoveButton"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Automove"
+        app:layout_constraintStart_toStartOf="@+id/SalesButton"
+        app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
+
     <TextView
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:onClick="clickBack"
         android:text="- Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/SpeedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make vehicle move faster by 3%."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
+
+    <TextView
+        android:id="@+id/SizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make vehicle bigger by 3%."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
+
+    <TextView
+        android:id="@+id/HarvestTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Increase chance for 2x harvest by 4%."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
+
+    <TextView
+        android:id="@+id/SalesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Items sell for 4% more. Sell 20% larger stacks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
+
+    <TextView
+        android:id="@+id/AutomoveTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press __ to toggle automatic movement."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AutomoveButton" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
