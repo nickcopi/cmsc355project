@@ -14,8 +14,22 @@ public class HarvestableManager {
     public void removePlant(Collidable plant){
         plants.remove(plant);
     }
+    public void addPlant(int x,int y){
+        plants.add(new Grass(x,y));
+    }
 
     public ArrayList<Collidable> getPlants() {
         return (ArrayList<Collidable>) plants.clone();
+    }
+    public void collidePlayer(Player player){
+        for(Collidable item: this.getPlants()){
+            if(PhysicsManager.collides(item,player)){
+                this.removePlant(item);
+                player.incrementItems();
+            }
+        }
+    }
+    public int getItems(){
+        return plants.size();
     }
 }

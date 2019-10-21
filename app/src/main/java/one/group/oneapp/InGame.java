@@ -98,6 +98,11 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         startActivityForResult(intent, UPGRADE_MENU);
 
     }
+
+    public HarvestableManager getHarvestableManager() {
+        return harvestableManager;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == UPGRADE_MENU) {
@@ -199,11 +204,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 }
                 //handle the game updates
                 player.move();
-                for(Collidable item: harvestableManager.getPlants()){
-                    if(PhysicsManager.collides(item,player)){
-                        harvestableManager.removePlant(item);
-                    }
-                }
+                harvestableManager.collidePlayer(player);
 
                 //sleep for a short period of time.
                 if (!Running) return;  //don't sleep, just exit if we are done.

@@ -175,6 +175,38 @@ public class EspressoTest {
         assertEquals(oldY,ingame.getPlayer().getY());
     }
 
+    //As a player that is moving I want to harvest items I collide with so that I have things to sell.
+
+    //Given I collide with an item when I am on top of it then it should go in my inventory.
+    @Test
+    public void testItemIntoInvent() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        assertEquals(1,ingame.getPlayer().getItems());
+    }
+
+    //Given I collide with an item when I have harvesting upgrades unlocked then I should harvest extra of it.
+    @Test
+    public void testNoItemIntoInvent() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        //ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        assertEquals(0,ingame.getPlayer().getItems());
+    }
+
+    //Given I collide with an item when I am on top of it then it should be cleared from the screen.
+    @Test
+    public void testItemOffScreen() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
+        int oldCount = ingame.getHarvestableManager().getItems();
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        assertEquals(oldCount-1,ingame.getHarvestableManager().getItems());
+    }
 
 
     public Activity getActivityInstance(){
