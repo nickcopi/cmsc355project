@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2CA3DA"
     tools:context=".UpgradeMenu">
 
 
@@ -12,7 +13,9 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#1124D1"
         android:text="Speed 1"
+        android:textColor="#F0BF0A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +25,9 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:background="#1124D1"
         android:text="Size 1"
+        android:textColor="#F0BF0A"
         app:layout_constraintStart_toStartOf="@+id/SpeedButton"
         app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
 
@@ -31,7 +36,9 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:background="#1124D1"
         android:text="Harvest 1"
+        android:textColor="#F0BF0A"
         app:layout_constraintStart_toStartOf="@+id/SizeButton"
         app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
 
@@ -40,7 +47,9 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:background="#1124D1"
         android:text="Sales 1"
+        android:textColor="#F0BF0A"
         app:layout_constraintStart_toStartOf="@+id/HarvestButton"
         app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
 
@@ -49,7 +58,9 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:background="#1124D1"
         android:text="Automove"
+        android:textColor="#F0BF0A"
         app:layout_constraintStart_toStartOf="@+id/SalesButton"
         app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
 
@@ -61,6 +72,7 @@
         android:layout_marginBottom="16dp"
         android:onClick="clickBack"
         android:text="- Back"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -69,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make vehicle move faster by 3%."
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
@@ -78,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make vehicle bigger by 3%."
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
@@ -87,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Increase chance for 2x harvest by 4%."
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
@@ -96,6 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Items sell for 4% more. Sell 20% larger stacks"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
@@ -105,6 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Press __ to toggle automatic movement."
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AutomoveButton" />
