@@ -8,3 +8,6 @@ We implemented and wrote tests for:
 - As a player I want to not go off the games map so that I can continue to play the game.
 - As a player that controls the character when I swipe I want to change directions so that I can control which way I move.
 - As a player seeking fun I want to be able to access menus so that I can play the game.
+
+Getting the initial Canvas SurfaceView and threading set up was a pain, as well as simulating touch input for the tests, but fortunately we were able to find code online to get us started with it.
+Refactoring some of the tests and the way input is handled as well as adding a main game class may be in order for a future iteration.
