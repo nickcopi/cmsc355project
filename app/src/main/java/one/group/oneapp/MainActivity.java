@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 
+
 public class MainActivity extends Activity {
 
     public static boolean doesThisExist = true;
@@ -23,7 +24,10 @@ public class MainActivity extends Activity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.lawnmower);
 
-}
+
+        setContentView(R.layout.activity_main);
+    }
+
     public void clickPlay(View view){
         Intent intent = new Intent(MainActivity.this,InGame.class);
         startActivity(intent);
