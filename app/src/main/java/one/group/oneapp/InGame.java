@@ -52,15 +52,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
         sellView = ((TextView)findViewById(R.id.sell));
 
-        runOnUiThread(new Runnable() {
 
-            @Override
-            public void run() {
-                updateViews();
-                // Stuff that updates the UI
-
-            }
-        });
 
 
         //get a generic surface and all our callbacks to it, with a touchlistener.
@@ -199,6 +191,15 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 }
                 //handle the game updates
                 game.update();
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        updateViews();
+                        // Stuff that updates the UI
+
+                    }
+                });
                 //sleep for a short period of time.
                 if (!Running) return;  //don't sleep, just exit if we are done.
                 try {
