@@ -4,6 +4,8 @@ package one.group.oneapp;
 //import android.view.MotionEvent;
 //import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 public class Player implements Collidable //GestureDetector.OnGestureListener
 {
 //    //No clue what the GestureDetector line does
@@ -91,7 +93,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
     }
 
     public int sell(){
-        items--;
+
         return items;
     }
 
