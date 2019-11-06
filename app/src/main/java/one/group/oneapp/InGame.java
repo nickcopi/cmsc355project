@@ -20,6 +20,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     private final int UPGRADE_MENU = 1;
     private myThread thread;
     public Paint black;
+    private TextView sellView;
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
     private Game game = new Game();
@@ -47,6 +49,18 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         scale = getResources().getDisplayMetrics().density; //this gives me the scale value for a mdpi baseline of 1.
 
         black = new Paint();  //default is black and we really are not using it.  need it to draw the alien.
+
+        sellView = ((TextView)findViewById(R.id.sell));
+
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                updateViews();
+                // Stuff that updates the UI
+
+            }
+        });
 
 
         //get a generic surface and all our callbacks to it, with a touchlistener.
@@ -83,6 +97,16 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     }
 
+    public void clickSell(View view){
+        //View text = findViewById(R.id.sell);
+        //((TextView) text).setText("Sell some of " + game.getPlayer().sell() + " items");
+        game.getPlayer().sell();
+    }
+
+    public void updateViews(){
+        sellView.setText("Sell some of " + game.getPlayer().getItems() + " items");
+    }
+
     public HarvestableManager getHarvestableManager() {
         return game.getHarvestableManager();
     }
@@ -99,7 +123,6 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     public Player getPlayer() {
         return game.getPlayer();
     }
-
 
 
 
@@ -138,6 +161,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
             }
         }
     }
+
+
     class myThread extends Thread {
         private SurfaceHolder _surfaceHolder;
 

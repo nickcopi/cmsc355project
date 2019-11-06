@@ -1,6 +1,6 @@
 package one.group.oneapp;
 
-public abstract class upgradeStats
+public abstract class AbstractUpgrade
 {
     public int getCost()
     {

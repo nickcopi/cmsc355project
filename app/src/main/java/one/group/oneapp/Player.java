@@ -18,7 +18,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 //    private int screenWidth;
 //    private int screenHeight;
 
-    private int x,y,width,height,items;
+    private int x,y,width,height,items,money;
     private static final int minX = 0;
     private static final int minY = 300;
     private static final int maxX = 1050;
@@ -38,6 +38,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
         this.width = 100;
         this.speed = 5;
         this.items = 0;
+        this.money = 0;
         this.direction = Directions.LEFT;
     }
     public void move(){
@@ -87,6 +88,11 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 
     public void incrementItems(){
         items++;
+    }
+
+    public int sell(){
+        items--;
+        return items;
     }
 
     public void setDirection(Directions direction) {

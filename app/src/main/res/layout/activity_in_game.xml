@@ -26,4 +26,15 @@
         android:text="Upgrade Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="9dp"
+        android:onClick="clickSell"
+        android:text="Sell"
+        app:layout_constraintBottom_toTopOf="@+id/upgrade"
+        app:layout_constraintStart_toStartOf="@+id/upgrade" />
 </androidx.constraintlayout.widget.ConstraintLayout>

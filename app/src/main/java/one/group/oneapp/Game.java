@@ -4,10 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
+import android.widget.TextView;
 
 public class Game {
     private HarvestableManager harvestableManager;
     private Player player;
+
     public  Game(){
         harvestableManager = new HarvestableManager();
         player = new Player();
