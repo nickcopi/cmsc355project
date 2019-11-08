@@ -85,7 +85,9 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
+        //intent.putExtra("game",(Object)game);
         startActivityForResult(intent, UPGRADE_MENU);
+
 
     }
 
