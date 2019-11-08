@@ -6,6 +6,7 @@ package one.group.oneapp;
 
 import java.util.ArrayList;
 
+
 public class Player implements Collidable //GestureDetector.OnGestureListener
 {
 //    //No clue what the GestureDetector line does
@@ -20,11 +21,13 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 //    private int screenWidth;
 //    private int screenHeight;
 
-    private int x,y,width,height,items,money;
+    private int x,y,width,height,money;
     private static final int minX = 0;
     private static final int minY = 300;
     private static final int maxX = 1050;
     private static final int maxY = 1750;
+    private Wallet wallet;
+    private ArrayList<Item> items;
     private double speed;
     private Directions direction;
     public enum Directions{
@@ -39,8 +42,9 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
         this.height = 100;
         this.width = 100;
         this.speed = 5;
-        this.items = 0;
-        this.money = 0;
+        this.items = new ArrayList<Item>();
+        this.items.add(new GrassItem());
+        this.wallet = new Wallet();
         this.direction = Directions.LEFT;
     }
     public void move(){
@@ -85,16 +89,15 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
     }
 
     public int getItems() {
-        return items;
+        return items.get(0).getCount();
     }
 
     public void incrementItems(){
-        items++;
+        items.get(0).increaseCount(1);
     }
 
-    public int sell(){
-
-        return items;
+    public void sell(){
+        items.get(0).sell(wallet,5,1);
     }
 
     public void setDirection(Directions direction) {

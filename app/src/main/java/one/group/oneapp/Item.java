@@ -14,4 +14,19 @@ public abstract class Item {
         wallet.addMoney(Math.round(this.count*amountToSell*multiplier));
         this.count -= amountToSell;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void increaseCount(int amount){
+        count += amount;
+    }
 }
