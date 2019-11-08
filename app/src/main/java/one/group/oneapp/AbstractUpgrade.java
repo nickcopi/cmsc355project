@@ -16,6 +16,9 @@ public abstract class AbstractUpgrade
         upgradeDescription = descriptionOfUpgrade;
         locked = true;
     }
+    AbstractUpgrade(){
+                
+    }
 
 
     public int getCost()
