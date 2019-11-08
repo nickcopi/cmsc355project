@@ -13,4 +13,6 @@ public class Wallet {
     public void addMoney(int money) {
         this.money += money;
     }
+
+    public void setMoney(int money) {this.money = money;}
 }
