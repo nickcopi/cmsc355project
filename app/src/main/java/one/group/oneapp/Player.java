@@ -50,16 +50,16 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
     public void move(){
         switch(this.direction){
             case LEFT:
-                this.x += this.speed * -1;
+                this.x += this.getSpeed() * -1;
                 break;
             case RIGHT:
-                this.x += this.speed;
+                this.x += this.getSpeed();
                 break;
             case UP:
-                this.y += this.speed * -1;
+                this.y += this.getSpeed() * -1;
                 break;
             case DOWN:
-                this.y += this.speed;
+                this.y += this.getSpeed();
                 break;
         }
         if(this.x < this.minX) this.x = this.minX;
@@ -90,6 +90,10 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 
     public int getItems() {
         return items.get(0).getCount();
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public void incrementItems(){

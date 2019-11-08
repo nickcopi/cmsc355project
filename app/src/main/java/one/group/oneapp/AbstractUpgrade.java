@@ -17,7 +17,7 @@ public abstract class AbstractUpgrade
         locked = true;
     }
     AbstractUpgrade(){
-                
+
     }
 
 
