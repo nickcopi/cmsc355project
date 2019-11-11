@@ -21,7 +21,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 //    private int screenWidth;
 //    private int screenHeight;
 
-    private int x,y,width,height,money;
+    private int x,y,width,height;
     private static final int minX = 0;
     private static final int minY = 300;
     private static final int maxX = 1050;
@@ -47,6 +47,7 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
         this.wallet = new Wallet();
         this.direction = Directions.LEFT;
     }
+
     public void move(){
         switch(this.direction){
             case LEFT:
@@ -94,6 +95,10 @@ public class Player implements Collidable //GestureDetector.OnGestureListener
 
     public double getSpeed() {
         return speed;
+    }
+
+    public int getMoney() {
+        return wallet.getMoney();
     }
 
     public void incrementItems(){

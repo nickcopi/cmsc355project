@@ -30,6 +30,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     private myThread thread;
     public Paint black;
     private TextView sellView;
+    private TextView moneyView;
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
     private Game game = new Game();
@@ -51,7 +52,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         black = new Paint();  //default is black and we really are not using it.  need it to draw the alien.
 
         sellView = ((TextView)findViewById(R.id.sell));
-
+        moneyView = ((TextView)findViewById(R.id.money));
 
 
 
@@ -99,6 +100,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     public void updateViews(){
         sellView.setText("Sell some of " + game.getPlayer().getItems() + " items");
+        moneyView.setText("$" + game.getPlayer().getMoney());
     }
 
     public HarvestableManager getHarvestableManager() {

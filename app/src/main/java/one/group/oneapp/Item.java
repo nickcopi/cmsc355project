@@ -11,7 +11,7 @@ public abstract class Item {
     }
     public final void sell(Wallet wallet, int maxSell, int multiplier){
         int amountToSell = (this.cost > maxSell)?maxSell:this.count;
-        wallet.addMoney(Math.round(this.count*amountToSell*multiplier));
+        wallet.addMoney(Math.round(this.cost*amountToSell*multiplier));
         this.count -= amountToSell;
     }
 

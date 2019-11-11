@@ -209,6 +209,47 @@ public class EspressoTest {
     }
 
 
+//As a player with some specific item I want to get money when I click the item’s sell button so that I can buy upgrades.
+
+    //Given I press the sell button when I have an item to sell then the appropriate amount of them are sold
+    @Test
+    public void testItemSell() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().incrementItems();
+        assertEquals(1,ingame.getPlayer().getItems());
+        onView(withId(R.id.sell)).perform(click());
+        assertEquals(0,ingame.getPlayer().getItems());
+    }
+
+    //Given I press the sell button when I have no items to sell then nothing happens.
+    @Test
+    public void testNoItemSell() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        //ingame.getPlayer().incrementItems();
+        onView(withId(R.id.sell)).perform(click());
+        assertEquals(0,ingame.getPlayer().getItems());
+        assertEquals(0,ingame.getPlayer().getMoney());
+    }
+
+    //Given I press the sell button when I have an item to sell then money goes up.
+    @Test
+    public void testItemSellMoney() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().incrementItems();
+        int oldMoney = ingame.getPlayer().getMoney();
+        onView(withId(R.id.sell)).perform(click());
+        assertEquals(oldMoney+2,ingame.getPlayer().getMoney());
+    }
+
+
+
+
+
+
+
     public Activity getActivityInstance(){
         getInstrumentation().runOnMainSync(new Runnable() {
             public void run() {
