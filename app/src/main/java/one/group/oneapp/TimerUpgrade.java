@@ -17,25 +17,21 @@ public class TimerUpgrade extends AbstractUpgrade
         locked = true;
     }
 
-    public String buy(Wallet playerWallet){
-        if (locked = false)
-        {
+    public String buy(Wallet playerWallet) {
+        if (locked = false) {
             int price = getCost();
 
-            if (playerWallet.getMoney() > price)
-            {
+            if (playerWallet.getMoney() > price) {
                 playerWallet.setMoney(playerWallet.getMoney() - price);
                 ++level;
 
                 return "Upgrade Purchased";
-            }
-            else
-            {
+            } else {
                 return "Broke boy";
             }
 
         }
 
         return upgradeName + " Upgrade is locked";
-    
+    }
 }
