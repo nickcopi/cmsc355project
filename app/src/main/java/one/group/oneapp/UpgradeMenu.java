@@ -12,26 +12,22 @@ import android.widget.TextView;
 
 public class UpgradeMenu extends Activity implements View.OnClickListener {
 
-    public Button SpeedButton;
-    int Speedcount = 1;
-    int Speedi = 1;
+    private Button speedButton;
+    private TextView speedTextView;
 
-    private Button HarvestButton;
-    int Harvestcount = 1;
-    int Harvesti = 1;
+    private Button harvestButton;
+    private TextView harvestTextView;
 
-    private Button SizeButton;
-    int Sizecount = 1;
-    int Sizei = 1;
+    private Button sizeButton;
+    private  TextView sizeTextView;
 
-    private Button SalesButton;
-    int Salescount = 1;
-    int Salesi = 1;
+    private Button salesButton;
+    private TextView salesTextView;
 
-    private Button AutomoveButton;
-    int Automovecount = 1;
-    int Automovei = 1;
-    Game game;
+    private Button autoMoveButton;
+    private TextView autoMoveTextView;
+
+    private Game game;
 
 
 
@@ -44,23 +40,31 @@ public class UpgradeMenu extends Activity implements View.OnClickListener {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_upgrade_menu);
 
-        SpeedButton = (Button) findViewById(R.id.SpeedButton);
-        SpeedButton.setOnClickListener(this);
+        speedButton = (Button) findViewById(R.id.SpeedButton);
+        speedButton.setOnClickListener(this);
 
-        HarvestButton = (Button) findViewById(R.id.HarvestButton);
-        HarvestButton.setOnClickListener(this);
+        harvestButton = (Button) findViewById(R.id.HarvestButton);
+        harvestButton.setOnClickListener(this);
 
-        SizeButton = (Button) findViewById(R.id.SizeButton);
-        SizeButton.setOnClickListener(this);
+        sizeButton = (Button) findViewById(R.id.SizeButton);
+        sizeButton.setOnClickListener(this);
 
-        SalesButton = (Button) findViewById(R.id.SalesButton);
-        SalesButton.setOnClickListener(this);
+        salesButton = (Button) findViewById(R.id.SalesButton);
+        salesButton.setOnClickListener(this);
 
-        AutomoveButton = (Button) findViewById(R.id.AutomoveButton);
-        AutomoveButton.setOnClickListener(this);
+        autoMoveButton = (Button) findViewById(R.id.AutomoveButton);
+        autoMoveButton.setOnClickListener(this);
         game = (Game) getIntent().getSerializableExtra("game");
+        initButtons();
        // SalesButton.setText("Test" + game.getPlayer().getHeight());
 
+    }
+
+    public void initButtons(){
+        SpeedUpgrade speedUpgrade = game.getPlayer().getUpgradeManager().getSpeedUpgrade();
+        speedButton.setText(speedUpgrade.getName() +" " +speedUpgrade.getLevel());
+        SizeUpgrade sizeUpgrade = game.getPlayer().getUpgradeManager().getSizeUpgrade();
+        sizeButton.setText(sizeUpgrade.getName() +" " +sizeUpgrade.getLevel());
     }
     public void clickBack(View view) {
         Intent result = new Intent();
@@ -71,7 +75,7 @@ public class UpgradeMenu extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
+/*
     Button SpeedButton = (Button) findViewById(R.id.SpeedButton);
     if(Speedcount >= 20 )
     {
@@ -131,7 +135,7 @@ public class UpgradeMenu extends Activity implements View.OnClickListener {
             Automovecount++;
             Automovei++;
         }
-
+*/
 
 
     }

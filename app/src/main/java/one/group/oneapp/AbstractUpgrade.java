@@ -1,29 +1,36 @@
 package one.group.oneapp;
 
-public abstract class AbstractUpgrade
+import java.io.Serializable;
+
+public abstract class AbstractUpgrade implements Serializable
 {
-    private int cost;
-    private int level;
-    private String upgradeName;
-    private String upgradeDescription;
-    private boolean locked;
+    protected double baseCost;
+    protected int level;
+    protected int lockValue;
+    protected String name;
+    protected String description;
+    protected boolean locked;
 
 
-    AbstractUpgrade(int costAmount, String nameOfUpgrade, String descriptionOfUpgrade) {
-        cost = costAmount;
-        level = 1;
-        upgradeName = nameOfUpgrade;
-        upgradeDescription = descriptionOfUpgrade;
-        locked = true;
+    AbstractUpgrade(double baseCost, String name, String description) {
+        this.baseCost = baseCost;
+        this.level = 1;
+        this.name = name;
+        this.description = description;
+        this.lockValue = -1;
+        this.locked = false;
     }
     AbstractUpgrade(){
 
     }
 
+    public String getName() {
+        return name;
+    }
 
     public int getCost()
     {
-        return Math.round(cost * (level++) * (level++) + (20 * cost));
+        return (int) Math.round(this.baseCost * (this.level+1) * (this.level+1) + (20 * this.baseCost));
     }
 
 //    public String getLockedText()  //Do we really need this method????
@@ -36,26 +43,23 @@ public abstract class AbstractUpgrade
         return level;
     }
 
-    public String buy(Wallet playerWallet)
+    public abstract String getText();
+
+    public abstract double getBonus(int level);
+    public double getBonus(){
+        return getBonus(this.level);
+    }
+    public String buy(Wallet wallet)
     {
-        if (locked = false)
-        {
-            int price = getCost();
-
-            if (playerWallet.getMoney() > price)
-            {
-                playerWallet.setMoney(playerWallet.getMoney() - price);
-                ++level;
-
-                return "Upgrade Purchased";
-            }
-            else
-            {
-                return "Broke boy";
-            }
-
+        if(this.locked) return "This upgrade is locked!";
+        int price = this.getCost();
+        if(wallet.getMoney() < price){
+            return "Cannot afford. Need $" + (price-wallet.getMoney()) + " more!";
         }
-
-        return upgradeName + " Upgrade is locked";
+        wallet.spendMoney(price);
+        this.level++;
+        if(this.lockValue != -1 && this.getBonus() > this.lockValue) this.locked = true;
+        //if(this.lockValue && this.getBonus() > this.lockValue) this.locked = true;
+        return "Upgrade purchased";
     }
 }

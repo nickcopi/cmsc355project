@@ -31,6 +31,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
     private ArrayList<Item> items;
     private double speed;
     private Directions direction;
+    private UpgradeManager upgradeManager;
     public enum Directions{
         LEFT,
         RIGHT,
@@ -47,6 +48,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         this.items.add(new GrassItem());
         this.wallet = new Wallet();
         this.direction = Directions.LEFT;
+        this.upgradeManager = new UpgradeManager();
     }
 
     public void move(){
@@ -108,6 +110,10 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     public void sell(){
         items.get(0).sell(wallet,5,1);
+    }
+
+    public UpgradeManager getUpgradeManager() {
+        return upgradeManager;
     }
 
     public void setDirection(Directions direction) {

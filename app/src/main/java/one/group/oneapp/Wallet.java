@@ -15,6 +15,9 @@ public class Wallet implements Serializable {
     public void addMoney(int money) {
         this.money += money;
     }
+    public void spendMoney(int money) {
+        this.money -= money;
+    }
 
     public void setMoney(int money) {this.money = money;}
 }
