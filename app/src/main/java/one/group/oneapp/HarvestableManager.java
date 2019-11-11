@@ -1,8 +1,9 @@
 package one.group.oneapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class HarvestableManager {
+public class HarvestableManager implements Serializable {
     private ArrayList<Collidable> plants = new ArrayList<Collidable>();
     public HarvestableManager(){
         plants.add(new Grass(400,400));

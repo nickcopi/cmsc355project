@@ -1,6 +1,8 @@
 package one.group.oneapp;
 
-public class Wallet {
+import java.io.Serializable;
+
+public class Wallet implements Serializable {
     private  int money;
     public Wallet(){
         this.money = 0;

@@ -1,6 +1,8 @@
 package one.group.oneapp;
 
-public abstract class Item {
+import java.io.Serializable;
+
+public abstract class Item  implements Serializable {
     String name;
     int cost;
     int count;

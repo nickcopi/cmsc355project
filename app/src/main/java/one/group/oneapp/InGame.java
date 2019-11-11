@@ -22,6 +22,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -86,7 +87,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
-        //intent.putExtra("game",(Object)game);
+        intent.putExtra("game",game);
         startActivityForResult(intent, UPGRADE_MENU);
 
 

@@ -31,7 +31,7 @@ public class UpgradeMenu extends Activity implements View.OnClickListener {
     private Button AutomoveButton;
     int Automovecount = 1;
     int Automovei = 1;
-
+    Game game;
 
 
 
@@ -58,6 +58,8 @@ public class UpgradeMenu extends Activity implements View.OnClickListener {
 
         AutomoveButton = (Button) findViewById(R.id.AutomoveButton);
         AutomoveButton.setOnClickListener(this);
+        game = (Game) getIntent().getSerializableExtra("game");
+       // SalesButton.setText("Test" + game.getPlayer().getHeight());
 
     }
     public void clickBack(View view) {

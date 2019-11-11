@@ -1,6 +1,8 @@
 package one.group.oneapp;
 
-public class Grass extends Harvestable {
+import java.io.Serializable;
+
+public class Grass extends Harvestable implements Serializable {
     static final int width = 20;
     static final int height = 20;
     public Grass(int x,int y){

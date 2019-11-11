@@ -6,7 +6,9 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.widget.TextView;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
     private HarvestableManager harvestableManager;
     private Player player;
 
