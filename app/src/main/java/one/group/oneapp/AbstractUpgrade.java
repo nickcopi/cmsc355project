@@ -62,4 +62,8 @@ public abstract class AbstractUpgrade implements Serializable
         //if(this.lockValue && this.getBonus() > this.lockValue) this.locked = true;
         return "Upgrade purchased";
     }
+
+    public String getDescription() {
+        return getText() + " $" + getCost();
+    }
 }

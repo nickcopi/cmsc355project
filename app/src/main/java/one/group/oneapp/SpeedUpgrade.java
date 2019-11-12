@@ -15,8 +15,7 @@ public class SpeedUpgrade extends AbstractUpgrade
 
     @Override
     public String getText() {
-        return String.format("%s by %d%",
-                this.description,
-                Math.round(this.getBonus(this.level+1)*100));
+        return this.description + " by " +
+                Math.round(this.getBonus(this.level+1)*100) + "%";
     }
 }

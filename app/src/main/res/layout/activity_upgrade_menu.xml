@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:background="#FC02547A"
+        android:onClick="clickSize"
         android:text="Size 1"
         android:textColor="#E6CF0F"
         app:layout_constraintStart_toStartOf="@+id/SpeedButton"

@@ -104,6 +104,10 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         return wallet.getMoney();
     }
 
+    public Wallet getWallet() {
+        return wallet;
+    }
+
     public void incrementItems(){
         items.get(0).increaseCount(1);
     }
