@@ -244,7 +244,53 @@ public class EspressoTest {
         assertEquals(oldMoney+2,ingame.getPlayer().getMoney());
     }
 
+//As a player looking to more quickly harvest items I want to move faster when I buy a speed upgrade so that I can make more money.
 
+
+    //Given I press the speed upgrade when I have money then my speed increases by the upgrades amount.
+    @Test
+    public void testSpeedUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        double oldSpeed = ingame.getPlayer().getSpeed();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SpeedButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true,oldSpeed < ingame.getPlayer().getSpeed());
+    }
+
+    //Given I press the speed upgrade when my speed is at maximum then my speed doesn’t change and no money is taken, as well as no upgrades locked.
+    @Test
+    public void testSpeedUpgradeLock() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(100000);
+        onView(withId(R.id.upgrade)).perform(click());
+        for(int i = 0;i<31;i++)
+            onView(withId(R.id.SpeedButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        double oldSpeed = ingame.getPlayer().getSpeed();
+        int oldMoney = ingame.getPlayer().getMoney();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SpeedButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+
+        assertEquals(true,oldSpeed == ingame.getPlayer().getSpeed());
+        assertEquals(true,oldMoney == ingame.getPlayer().getMoney());
+
+    }
+    //Given I press the speed upgrade when I haven't enough money then nothing happens.
+    @Test
+    public void testNoSpeedUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        double oldSpeed = ingame.getPlayer().getSpeed();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SpeedButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true,oldSpeed == ingame.getPlayer().getSpeed());
+    }
 
 
 
