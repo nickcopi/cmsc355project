@@ -54,7 +54,7 @@ public class Game implements Serializable {
         brush.setColor(Color.rgb(0xff,0xf0,0xff));
         //brush.setStyle(Paint.Style.STROKE);
         c.drawRect(player.getX(),player.getY(),player.getX()+player.getWidth(),player.getY()+player.getHeight(),brush);
-        brush.setColor(Color.rgb(0x00,0x00,0xff));
+        brush.setColor(Color.rgb(0x00,0xff,0x00));
         for(Collidable item: harvestableManager.getPlants()) {
             c.drawRect(item.getX(),item.getY(),item.getX()+item.getWidth(),item.getY()+item.getHeight(),brush);
 

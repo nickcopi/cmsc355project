@@ -23,10 +23,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 //    private int screenHeight;
 
     private int x,y,width,height;
-    private static final int minX = 0;
-    private static final int minY = 300;
-    private static final int maxX = 1050;
-    private static final int maxY = 1750;
+
     private Wallet wallet;
     private ArrayList<Item> items;
     private double speed;
@@ -43,7 +40,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         this.y = 700;
         this.height = 100;
         this.width = 100;
-        this.speed = 5;
+        this.speed = 10;
         this.items = new ArrayList<Item>();
         this.items.add(new GrassItem());
         this.wallet = new Wallet();
@@ -66,10 +63,10 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
                 this.y += this.getSpeed();
                 break;
         }
-        if(this.x < this.minX) this.x = this.minX;
-        if(this.y < this.minY) this.y = this.minY;
-        if(this.x + this.getWidth() > this.maxX) this.x = this.maxX - this.getWidth();
-        if(this.y + this.getHeight() > this.maxY) this.y = this.maxY - this.getHeight();
+        if(this.x < PhysicsManager.minX) this.x = PhysicsManager.minX;
+        if(this.y < PhysicsManager.minY) this.y = PhysicsManager.minY;
+        if(this.x + this.getWidth() > PhysicsManager.maxX) this.x = PhysicsManager.maxX - this.getWidth();
+        if(this.y + this.getHeight() > PhysicsManager.maxY) this.y = PhysicsManager.maxY - this.getHeight();
     }
 
     public int getX() {

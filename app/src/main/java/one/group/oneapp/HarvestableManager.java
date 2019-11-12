@@ -6,10 +6,7 @@ import java.util.ArrayList;
 public class HarvestableManager implements Serializable {
     private ArrayList<Collidable> plants = new ArrayList<Collidable>();
     public HarvestableManager(){
-        plants.add(new Grass(400,400));
-        plants.add(new Grass(300,300));
-        plants.add(new Grass(400,700));
-        plants.add(new Grass(200,1200));
+        this.regenerate();
     }
 
     public void removePlant(Collidable plant){
@@ -18,7 +15,17 @@ public class HarvestableManager implements Serializable {
     public void addPlant(int x,int y){
         plants.add(new Grass(x,y));
     }
+    public void addPlant(){
+        int x = PhysicsManager.minX + (int)(Math.random()*(PhysicsManager.maxX - Grass.width- PhysicsManager.minX));
+        int y = PhysicsManager.minY + (int)(Math.random()*(PhysicsManager.maxY - Grass.height - PhysicsManager.minY));
+        plants.add(new Grass(x,y));
+    }
 
+    public  void regenerate(){
+        for(int i = 0;i<100;i++){
+            addPlant();
+        }
+    }
     public ArrayList<Collidable> getPlants() {
         return (ArrayList<Collidable>) plants.clone();
     }
@@ -27,6 +34,7 @@ public class HarvestableManager implements Serializable {
             if(PhysicsManager.collides(item,player)){
                 this.removePlant(item);
                 player.incrementItems();
+                if(this.plants.size() == 0) this.regenerate();
             }
         }
     }
