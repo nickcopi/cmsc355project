@@ -24,6 +24,8 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     private int x,y,width,height;
 
+    private boolean frozen;
+
     private Wallet wallet;
     private ArrayList<Item> items;
     private double speed;
@@ -48,7 +50,13 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         this.upgradeManager = new UpgradeManager();
     }
 
+    public void clearItems(){
+        this.items = new ArrayList<Item>();
+        this.items.add(new GrassItem());
+    }
+
     public void move(){
+        if(frozen) return;
         switch(this.direction){
             case LEFT:
                 this.x += this.getSpeed() * -1;
@@ -112,6 +120,10 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     public Wallet getWallet() {
         return wallet;
+    }
+
+    public void setFrozen(boolean frozen) {
+        this.frozen = frozen;
     }
 
     public void incrementItems(){

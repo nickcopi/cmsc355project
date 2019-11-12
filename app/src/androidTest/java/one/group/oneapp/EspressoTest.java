@@ -25,6 +25,7 @@ import org.junit.Test;
 
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import static android.app.PendingIntent.getActivity;
@@ -188,6 +189,7 @@ public class EspressoTest {
     public void testItemIntoInvent() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().clearItems();
         ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
         ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
         assertEquals(1, ingame.getPlayer().getItems());
@@ -198,6 +200,7 @@ public class EspressoTest {
     public void testNoItemIntoInvent() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().clearItems();
         //ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
         ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
         assertEquals(0, ingame.getPlayer().getItems());
@@ -222,6 +225,8 @@ public class EspressoTest {
     public void testItemSell() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().clearItems();
+        ingame.getPlayer().setFrozen(true);
         ingame.getPlayer().incrementItems();
         assertEquals(1, ingame.getPlayer().getItems());
         onView(withId(R.id.sell)).perform(click());
@@ -234,6 +239,8 @@ public class EspressoTest {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         //ingame.getPlayer().incrementItems();
+        ingame.getPlayer().clearItems();
+        ingame.getPlayer().setFrozen(true);
         onView(withId(R.id.sell)).perform(click());
         assertEquals(0, ingame.getPlayer().getItems());
         assertEquals(0, ingame.getPlayer().getMoney());
@@ -244,6 +251,8 @@ public class EspressoTest {
     public void testItemSellMoney() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().clearItems();
+        ingame.getPlayer().setFrozen(true);
         ingame.getPlayer().incrementItems();
         int oldMoney = ingame.getPlayer().getMoney();
         onView(withId(R.id.sell)).perform(click());
@@ -347,6 +356,56 @@ public class EspressoTest {
         onView(withId(R.id.back)).perform(click());
         assertEquals(true, oldSize == ingame.getPlayer().getWidth());
     }
+
+//As a player I want collected items to repopulate when all are collected so that I can continue playing.
+
+    //Given I collide with an item when there are still more on the screen then they don't regenerate.
+    @Test
+    public void testNoRegenerateGrass() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        int oldSize = ingame.getHarvestableManager().getItems();
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        ingame.getPlayer().clearItems();
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        assertEquals(oldSize, ingame.getHarvestableManager().getItems());
+    }
+
+    //Given I collide with an item when it is the last one on the screen then they regenerate.
+    @Test
+    public void testRegenerateGrass() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        ingame.getPlayer().clearItems();
+        ingame.getHarvestableManager().clearItems();
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        assertEquals(true, ingame.getHarvestableManager().getItems()>1);
+    }
+
+    //Given I collide with an item when it will cause a regeneration then regenerated items will be be within the bounds of the game.
+    @Test
+    public void testRegenerateGrassBounds() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        ingame.getPlayer().clearItems();
+        ingame.getHarvestableManager().clearItems();
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
+        ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
+        ArrayList<Collidable> items = ingame.getHarvestableManager().getPlants();
+        for(Collidable item: items){
+            assertEquals(true,PhysicsManager.isValidPosition(item));
+        }
+        //assertEquals(true, ingame.getHarvestableManager().getItems()>1);
+    }
+
+
+
+
+
 
 
     public Activity getActivityInstance(){

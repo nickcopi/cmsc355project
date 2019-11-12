@@ -41,4 +41,7 @@ public class HarvestableManager implements Serializable {
     public int getItems(){
         return plants.size();
     }
+    public void clearItems(){
+        plants = new ArrayList<Collidable>();
+    }
 }

@@ -9,4 +9,11 @@ public class PhysicsManager {
         return (o1.getX() + o1.getWidth() > o2.getX() && o1.getX() < o2.getX()+o2.getWidth() &&
                 o1.getY() + o1.getHeight() > o2.getY() && o1.getY() < o2.getY()+o2.getHeight());
     }
+    public static boolean isValidPosition(Collidable o1){
+        return (o1.getX() >= minX &&
+                o1.getY() >= minY &&
+                o1.getX() + o1.getWidth() <= maxX &&
+                o1.getY() + o1.getHeight() <= maxY
+        );
+    }
 }
