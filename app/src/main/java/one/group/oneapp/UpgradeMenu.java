@@ -30,6 +30,9 @@ public class UpgradeMenu extends Activity {
     private Game game;
 
 
+    private TextView money;
+    private TextView output;
+
 
 
 
@@ -39,6 +42,9 @@ public class UpgradeMenu extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_upgrade_menu);
+
+        money = (TextView) findViewById(R.id.money);
+        output = (TextView) findViewById(R.id.output);
 
         speedButton = (Button) findViewById(R.id.SpeedButton);
         speedTextView = (TextView) findViewById(R.id.SpeedTextView);
@@ -66,6 +72,8 @@ public class UpgradeMenu extends Activity {
         SizeUpgrade sizeUpgrade = game.getPlayer().getUpgradeManager().getSizeUpgrade();
         sizeButton.setText(getName(sizeUpgrade));
         sizeTextView.setText(sizeUpgrade.getDescription());
+
+        money.setText("$" + game.getPlayer().getMoney());
     }
     public void clickBack(View view) {
         Intent result = new Intent();
@@ -83,7 +91,7 @@ public class UpgradeMenu extends Activity {
     }
 
     public void buyUpgrade(AbstractUpgrade upgrade){
-        upgrade.buy(game.getPlayer().getWallet());
+        output.setText(upgrade.buy(game.getPlayer().getWallet()));
         updateButtons();
     }
 
