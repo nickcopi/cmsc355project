@@ -90,6 +90,9 @@ public class UpgradeMenu extends Activity {
     public void clickSize(View view){
         buyUpgrade(game.getPlayer().getUpgradeManager().getSizeUpgrade());
     }
+    public void clickSpeed(View view){
+        buyUpgrade(game.getPlayer().getUpgradeManager().getSpeedUpgrade());
+    }
 
     public void buyUpgrade(AbstractUpgrade upgrade){
         output.setText(upgrade.buy(game.getPlayer().getWallet()));

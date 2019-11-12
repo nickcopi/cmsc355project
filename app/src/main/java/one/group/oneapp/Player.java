@@ -81,11 +81,11 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
     }
 
     public int getWidth() {
-        return width;
+        return (int)Math.round(width + width * this.upgradeManager.getSizeUpgrade().getBonus());
     }
 
     public int getHeight() {
-        return height;
+        return (int)Math.round(height + height * this.upgradeManager.getSizeUpgrade().getBonus());
     }
 
     public Directions getDirection() {
@@ -97,7 +97,8 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
     }
 
     public double getSpeed() {
-        return speed;
+        return speed + speed * this.upgradeManager.getSpeedUpgrade().getBonus();
+
     }
 
     public int getMoney() {

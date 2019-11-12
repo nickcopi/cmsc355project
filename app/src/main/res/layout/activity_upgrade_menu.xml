@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#FC02547A"
+        android:onClick="clickSpeed"
         android:text="Speed 1"
         android:textColor="#E6CF0F"
         app:layout_constraintEnd_toEndOf="parent"
