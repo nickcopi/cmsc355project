@@ -87,7 +87,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     public void clickUpgrades(View view){
         Intent intent = new Intent(InGame.this,UpgradeMenu.class);
-        intent.putExtra("game",game);
+        intent.putExtra("upgradeManager",game.getPlayer().getUpgradeManager());
+        intent.putExtra("wallet",game.getPlayer().getWallet());
         startActivityForResult(intent, UPGRADE_MENU);
 
 
@@ -112,7 +113,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == UPGRADE_MENU) {
             if (resultCode == RESULT_OK) {
-                game = (Game) data.getSerializableExtra("game");
+                game.getPlayer().setUpgradeManager((UpgradeManager) data.getSerializableExtra("upgradeManager"));
+                game.getPlayer().setWallet((Wallet) data.getSerializableExtra("wallet"));
             }
         }
     }

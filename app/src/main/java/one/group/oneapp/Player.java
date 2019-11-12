@@ -88,6 +88,14 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         return (int)Math.round(height + height * this.upgradeManager.getSizeUpgrade().getBonus());
     }
 
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public void setUpgradeManager(UpgradeManager upgradeManager) {
+        this.upgradeManager = upgradeManager;
+    }
+
     public Directions getDirection() {
         return direction;
     }

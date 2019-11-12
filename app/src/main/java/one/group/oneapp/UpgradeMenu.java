@@ -27,7 +27,8 @@ public class UpgradeMenu extends Activity {
     private Button autoMoveButton;
     private TextView autoMoveTextView;
 
-    private Game game;
+    private Wallet wallet;
+    private UpgradeManager upgradeManager;
 
 
     private TextView money;
@@ -58,26 +59,28 @@ public class UpgradeMenu extends Activity {
 
         autoMoveButton = (Button) findViewById(R.id.AutomoveButton);
 
-        game = (Game) getIntent().getSerializableExtra("game");
+        wallet = (Wallet) getIntent().getSerializableExtra("wallet");
+        upgradeManager = (UpgradeManager) getIntent().getSerializableExtra("upgradeManager");
         updateButtons();
        // SalesButton.setText("Test" + game.getPlayer().getHeight());
 
     }
 
     public void updateButtons(){
-        SpeedUpgrade speedUpgrade = game.getPlayer().getUpgradeManager().getSpeedUpgrade();
+        SpeedUpgrade speedUpgrade = upgradeManager.getSpeedUpgrade();
         speedButton.setText(getName(speedUpgrade));
         speedTextView.setText(speedUpgrade.getDescription());
 
-        SizeUpgrade sizeUpgrade = game.getPlayer().getUpgradeManager().getSizeUpgrade();
+        SizeUpgrade sizeUpgrade = upgradeManager.getSizeUpgrade();
         sizeButton.setText(getName(sizeUpgrade));
         sizeTextView.setText(sizeUpgrade.getDescription());
 
-        money.setText("$" + game.getPlayer().getMoney());
+        money.setText("$" + wallet.getMoney());
     }
     public void clickBack(View view) {
         Intent result = new Intent();
-        result.putExtra("game",game);
+        result.putExtra("upgradeManager",upgradeManager);
+        result.putExtra("wallet",wallet);
         setResult(RESULT_OK,result);
         finish();
     }
@@ -88,14 +91,14 @@ public class UpgradeMenu extends Activity {
     }
 
     public void clickSize(View view){
-        buyUpgrade(game.getPlayer().getUpgradeManager().getSizeUpgrade());
+        buyUpgrade(upgradeManager.getSizeUpgrade());
     }
     public void clickSpeed(View view){
-        buyUpgrade(game.getPlayer().getUpgradeManager().getSpeedUpgrade());
+        buyUpgrade(upgradeManager.getSpeedUpgrade());
     }
 
     public void buyUpgrade(AbstractUpgrade upgrade){
-        output.setText(upgrade.buy(game.getPlayer().getWallet()));
+        output.setText(upgrade.buy(wallet));
         updateButtons();
     }
 
