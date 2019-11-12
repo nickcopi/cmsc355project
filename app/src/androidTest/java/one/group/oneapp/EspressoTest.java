@@ -50,8 +50,8 @@ public class EspressoTest {
 
 
     /*
-    * As a player seeking fun I want to be able to access menus so that I can play the game. #8
-    * */
+     * As a player seeking fun I want to be able to access menus so that I can play the game. #8
+     * */
 
 
     //Given I am on the start menu when I hit the start button then I am sent to the game activity.
@@ -61,6 +61,7 @@ public class EspressoTest {
 
         onView(withId(R.id.upgrade)).check(matches(withId(R.id.upgrade)));
     }
+
     //Given I am on the game activity when I hit the upgrade menu then I am sent to the upgrade menu.
     @Test
     public void testUpgradeMenuButton() {
@@ -68,6 +69,7 @@ public class EspressoTest {
         onView(withId(R.id.upgrade)).perform(click());
         onView(withId(R.id.back)).check(matches(withId(R.id.back)));
     }
+
     //Given I am on the upgrade menu when I press the back button then I am put back to the game activity.
     @Test
     public void testBackButton() {
@@ -89,32 +91,35 @@ public class EspressoTest {
     public void testMoveRight() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX()+100,ingame.getPlayer().getY()));
-        assertEquals(Player.Directions.RIGHT,ingame.getPlayer().getDirection());
+        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX() + 100, ingame.getPlayer().getY()));
+        assertEquals(Player.Directions.RIGHT, ingame.getPlayer().getDirection());
     }
+
     //Given I tap west of the player, when I am in game, then the player starts moving right
     @Test
     public void testMoveLeft() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX()-100,ingame.getPlayer().getY()));
-        assertEquals(Player.Directions.LEFT,ingame.getPlayer().getDirection());
+        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX() - 100, ingame.getPlayer().getY()));
+        assertEquals(Player.Directions.LEFT, ingame.getPlayer().getDirection());
     }
+
     //Given I tap below the player, when I am in game, then the player starts moving down
     @Test
     public void testMoveDown() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(),ingame.getPlayer().getY()+100));
-        assertEquals(Player.Directions.DOWN,ingame.getPlayer().getDirection());
+        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(), ingame.getPlayer().getY() + 100));
+        assertEquals(Player.Directions.DOWN, ingame.getPlayer().getDirection());
     }
+
     //Given I tap above the player, when I am in game, then the player starts moving up
     @Test
     public void testMoveUp() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(),ingame.getPlayer().getY()-100));
-        assertEquals(Player.Directions.UP,ingame.getPlayer().getDirection());
+        onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(), ingame.getPlayer().getY() - 100));
+        assertEquals(Player.Directions.UP, ingame.getPlayer().getDirection());
     }
 
     //As a player I want to not go off the games map so that I can continue to play the game.
@@ -126,12 +131,12 @@ public class EspressoTest {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.RIGHT);
-        for(int i = 0;i<1000;i++){
+        for (int i = 0; i < 1000; i++) {
             ingame.getPlayer().move();
         }
         int oldX = ingame.getPlayer().getX();
         ingame.getPlayer().move();
-        assertEquals(oldX,ingame.getPlayer().getX());
+        assertEquals(oldX, ingame.getPlayer().getX());
     }
 
     //Given I hit the left side of the play area, when I am moving, then I stop.
@@ -140,12 +145,12 @@ public class EspressoTest {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.LEFT);
-        for(int i = 0;i<1000;i++){
+        for (int i = 0; i < 1000; i++) {
             ingame.getPlayer().move();
         }
         int oldX = ingame.getPlayer().getX();
         ingame.getPlayer().move();
-        assertEquals(oldX,ingame.getPlayer().getX());
+        assertEquals(oldX, ingame.getPlayer().getX());
     }
 
     //Given I hit the bottom of the play area, when I am moving, then I stop.
@@ -154,25 +159,26 @@ public class EspressoTest {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.DOWN);
-        for(int i = 0;i<1000;i++){
+        for (int i = 0; i < 1000; i++) {
             ingame.getPlayer().move();
         }
         int oldY = ingame.getPlayer().getY();
         ingame.getPlayer().move();
-        assertEquals(oldY,ingame.getPlayer().getY());
+        assertEquals(oldY, ingame.getPlayer().getY());
     }
+
     //Given I hit the top of the play area, when I am moving, then I stop.
     @Test
     public void testTopBarrier() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().setDirection(Player.Directions.UP);
-        for(int i = 0;i<1000;i++){
+        for (int i = 0; i < 1000; i++) {
             ingame.getPlayer().move();
         }
         int oldY = ingame.getPlayer().getY();
         ingame.getPlayer().move();
-        assertEquals(oldY,ingame.getPlayer().getY());
+        assertEquals(oldY, ingame.getPlayer().getY());
     }
 
     //As a player that is moving I want to harvest items I collide with so that I have things to sell.
@@ -182,9 +188,9 @@ public class EspressoTest {
     public void testItemIntoInvent() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
         ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
-        assertEquals(1,ingame.getPlayer().getItems());
+        assertEquals(1, ingame.getPlayer().getItems());
     }
 
     //Given I collide with an item when I have harvesting upgrades unlocked then I should harvest extra of it.
@@ -194,7 +200,7 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         //ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
         ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
-        assertEquals(0,ingame.getPlayer().getItems());
+        assertEquals(0, ingame.getPlayer().getItems());
     }
 
     //Given I collide with an item when I am on top of it then it should be cleared from the screen.
@@ -202,10 +208,10 @@ public class EspressoTest {
     public void testItemOffScreen() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(),ingame.getPlayer().getY());
+        ingame.getHarvestableManager().addPlant(ingame.getPlayer().getX(), ingame.getPlayer().getY());
         int oldCount = ingame.getHarvestableManager().getItems();
         ingame.getHarvestableManager().collidePlayer(ingame.getPlayer());
-        assertEquals(oldCount-1,ingame.getHarvestableManager().getItems());
+        assertEquals(oldCount - 1, ingame.getHarvestableManager().getItems());
     }
 
 
@@ -217,9 +223,9 @@ public class EspressoTest {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().incrementItems();
-        assertEquals(1,ingame.getPlayer().getItems());
+        assertEquals(1, ingame.getPlayer().getItems());
         onView(withId(R.id.sell)).perform(click());
-        assertEquals(0,ingame.getPlayer().getItems());
+        assertEquals(0, ingame.getPlayer().getItems());
     }
 
     //Given I press the sell button when I have no items to sell then nothing happens.
@@ -229,8 +235,8 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         //ingame.getPlayer().incrementItems();
         onView(withId(R.id.sell)).perform(click());
-        assertEquals(0,ingame.getPlayer().getItems());
-        assertEquals(0,ingame.getPlayer().getMoney());
+        assertEquals(0, ingame.getPlayer().getItems());
+        assertEquals(0, ingame.getPlayer().getMoney());
     }
 
     //Given I press the sell button when I have an item to sell then money goes up.
@@ -241,7 +247,7 @@ public class EspressoTest {
         ingame.getPlayer().incrementItems();
         int oldMoney = ingame.getPlayer().getMoney();
         onView(withId(R.id.sell)).perform(click());
-        assertEquals(oldMoney+2,ingame.getPlayer().getMoney());
+        assertEquals(oldMoney + 2, ingame.getPlayer().getMoney());
     }
 
 //As a player looking to more quickly harvest items I want to move faster when I buy a speed upgrade so that I can make more money.
@@ -257,7 +263,7 @@ public class EspressoTest {
         onView(withId(R.id.upgrade)).perform(click());
         onView(withId(R.id.SpeedButton)).perform(click());
         onView(withId(R.id.back)).perform(click());
-        assertEquals(true,oldSpeed < ingame.getPlayer().getSpeed());
+        assertEquals(true, oldSpeed < ingame.getPlayer().getSpeed());
     }
 
     //Given I press the speed upgrade when my speed is at maximum then my speed doesn’t change and no money is taken, as well as no upgrades locked.
@@ -267,7 +273,7 @@ public class EspressoTest {
         InGame ingame = (InGame) getActivityInstance();
         ingame.getPlayer().getWallet().addMoney(100000);
         onView(withId(R.id.upgrade)).perform(click());
-        for(int i = 0;i<31;i++)
+        for (int i = 0; i < 31; i++)
             onView(withId(R.id.SpeedButton)).perform(click());
         onView(withId(R.id.back)).perform(click());
         double oldSpeed = ingame.getPlayer().getSpeed();
@@ -276,10 +282,11 @@ public class EspressoTest {
         onView(withId(R.id.SpeedButton)).perform(click());
         onView(withId(R.id.back)).perform(click());
 
-        assertEquals(true,oldSpeed == ingame.getPlayer().getSpeed());
-        assertEquals(true,oldMoney == ingame.getPlayer().getMoney());
+        assertEquals(true, oldSpeed == ingame.getPlayer().getSpeed());
+        assertEquals(true, oldMoney == ingame.getPlayer().getMoney());
 
     }
+
     //Given I press the speed upgrade when I haven't enough money then nothing happens.
     @Test
     public void testNoSpeedUpgrade() {
@@ -289,11 +296,57 @@ public class EspressoTest {
         onView(withId(R.id.upgrade)).perform(click());
         onView(withId(R.id.SpeedButton)).perform(click());
         onView(withId(R.id.back)).perform(click());
-        assertEquals(true,oldSpeed == ingame.getPlayer().getSpeed());
+        assertEquals(true, oldSpeed == ingame.getPlayer().getSpeed());
     }
 
+//As a player looking to easier harvest items I want to become larger when I buy a size upgrade so that I can make more money.
 
 
+    //Given I press the size upgrade when I have money then my size increases by the upgrades amount.
+    @Test
+    public void testSizeUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        double oldSize = ingame.getPlayer().getWidth();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SizeButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true, oldSize < ingame.getPlayer().getWidth());
+    }
+
+    //Given I press the size upgrade when my size is at maximum then my size doesn’t change and no money is taken.
+    @Test
+    public void testSizeUpgradeLock() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(100000);
+        onView(withId(R.id.upgrade)).perform(click());
+        for (int i = 0; i < 21; i++)
+            onView(withId(R.id.SizeButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        double oldSize = ingame.getPlayer().getWidth();
+        int oldMoney = ingame.getPlayer().getMoney();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SizeButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+
+        assertEquals(true, oldSize == ingame.getPlayer().getWidth());
+        assertEquals(true, oldMoney == ingame.getPlayer().getMoney());
+
+    }
+
+    //Given I press the size upgrade when I haven't enough money then nothing happens.
+    @Test
+    public void testNoSizeUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        double oldSize = ingame.getPlayer().getWidth();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SizeButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true, oldSize == ingame.getPlayer().getWidth());
+    }
 
 
     public Activity getActivityInstance(){
