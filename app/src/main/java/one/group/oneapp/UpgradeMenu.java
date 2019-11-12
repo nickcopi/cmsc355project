@@ -77,6 +77,7 @@ public class UpgradeMenu extends Activity {
     }
     public void clickBack(View view) {
         Intent result = new Intent();
+        result.putExtra("game",game);
         setResult(RESULT_OK,result);
         finish();
     }

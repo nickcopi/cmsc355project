@@ -112,7 +112,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == UPGRADE_MENU) {
             if (resultCode == RESULT_OK) {
-
+                game = (Game) data.getSerializableExtra("game");
             }
         }
     }
