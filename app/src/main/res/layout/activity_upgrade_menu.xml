@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#66F8DF"
+    android:background="#000000"
     tools:context=".UpgradeMenu">
 
 
@@ -13,10 +13,11 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#FC02547A"
+        android:background="#FC000000"
         android:onClick="clickSpeed"
         android:text="Speed 1"
-        android:textColor="#E6CF0F"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,10 +27,11 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="#FC02547A"
+        android:background="#FC000000"
         android:onClick="clickSize"
         android:text="Size 1"
-        android:textColor="#E6CF0F"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/SpeedButton"
         app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
 
@@ -38,9 +40,10 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="#FC02547A"
+        android:background="#FC000000"
         android:text="Harvest 1"
-        android:textColor="#E6CF0F"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/SizeButton"
         app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
 
@@ -49,9 +52,10 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="#FC02547A"
+        android:background="#FC000000"
         android:text="Sales 1"
-        android:textColor="#E6CF0F"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/HarvestButton"
         app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
 
@@ -60,30 +64,39 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="#FC02547A"
+        android:background="#FC000000"
+        android:fontFamily="monospace"
         android:text="Automove"
-        android:textColor="#E6CF0F"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/SalesButton"
         app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
 
     <TextView
         android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="415dp"
+        android:layout_height="22dp"
+        android:background="@android:drawable/bottom_bar"
+        android:fontFamily="monospace"
         android:onClick="clickBack"
-        android:text="- Back"
-        android:textColor="#0F33E6"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/SpeedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Make vehicle move faster by 3%."
-        android:textColor="#0F33E6"
+        android:textColor="#B3B3B3"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpeedButton" />
@@ -92,8 +105,10 @@
         android:id="@+id/SizeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Make vehicle bigger by 3%."
-        android:textColor="#0F33E6"
+        android:textColor="#B3B3B3"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SizeButton" />
@@ -102,8 +117,10 @@
         android:id="@+id/HarvestTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Increase chance for 2x harvest by 4%."
-        android:textColor="#0F33E6"
+        android:textColor="#B3B3B3"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HarvestButton" />
@@ -112,8 +129,11 @@
         android:id="@+id/SalesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Items sell for 4% more. Sell 20% larger stacks"
-        android:textColor="#0F33E6"
+        android:textAlignment="center"
+        android:textColor="#B3B3B3"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SalesButton" />
@@ -122,8 +142,10 @@
         android:id="@+id/AutomoveTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Press __ to toggle automatic movement."
-        android:textColor="#0F33E6"
+        android:textColor="#B3B3B3"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AutomoveButton" />
@@ -132,9 +154,13 @@
         android:id="@+id/money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="monospace"
         android:text="$0"
+        android:textColor="#2EFF00"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -144,12 +170,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
         android:layout_marginEnd="165dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="monospace"
         android:text=" "
+        android:textColor="#2EFF00"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/AutomoveTextView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -101,7 +101,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     }
 
     public void updateViews(){
-        sellView.setText("Sell some of " + game.getPlayer().getItems() + " items");
+        sellView.setText("Sell " + game.getPlayer().getItems() + " items");
         moneyView.setText("$" + game.getPlayer().getMoney());
     }
 
