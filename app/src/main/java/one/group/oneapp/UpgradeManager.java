@@ -5,11 +5,13 @@ import java.io.Serializable;
 public class UpgradeManager implements Serializable {
     private SpeedUpgrade speedUpgrade;
     private SizeUpgrade sizeUpgrade;
-    private AbstractUpgrade upgrades[] = {speedUpgrade,sizeUpgrade};
+    private HarvestUpgrade harvestUpgrade;
+    private AbstractUpgrade upgrades[] = {speedUpgrade,sizeUpgrade,harvestUpgrade};
 
     public UpgradeManager(){
         this.speedUpgrade = new SpeedUpgrade();
         this.sizeUpgrade = new SizeUpgrade();
+        this.harvestUpgrade = new HarvestUpgrade();
 
     }
 
@@ -19,5 +21,9 @@ public class UpgradeManager implements Serializable {
 
     public SpeedUpgrade getSpeedUpgrade() {
         return speedUpgrade;
+    }
+
+    public HarvestUpgrade getHarvestUpgrade() {
+        return harvestUpgrade;
     }
 }

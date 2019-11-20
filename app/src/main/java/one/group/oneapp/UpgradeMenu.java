@@ -51,6 +51,8 @@ public class UpgradeMenu extends Activity {
         speedTextView = (TextView) findViewById(R.id.SpeedTextView);
 
         harvestButton = (Button) findViewById(R.id.HarvestButton);
+        harvestTextView = (TextView) findViewById(R.id.HarvestTextView);
+
 
         sizeButton = (Button) findViewById(R.id.SizeButton);
         sizeTextView = (TextView) findViewById(R.id.SizeTextView);
@@ -75,6 +77,11 @@ public class UpgradeMenu extends Activity {
         sizeButton.setText(getName(sizeUpgrade));
         sizeTextView.setText(sizeUpgrade.getDescription());
 
+        HarvestUpgrade harvestUpgrade = upgradeManager.getHarvestUpgrade();
+        harvestButton.setText(getName(harvestUpgrade));
+        harvestTextView.setText(harvestUpgrade.getDescription());
+
+
         money.setText("$" + wallet.getMoney());
     }
     public void clickBack(View view) {
@@ -95,6 +102,10 @@ public class UpgradeMenu extends Activity {
     }
     public void clickSpeed(View view){
         buyUpgrade(upgradeManager.getSpeedUpgrade());
+    }
+
+    public void clickHarvest(View view){
+        buyUpgrade(upgradeManager.getHarvestUpgrade());
     }
 
     public void buyUpgrade(AbstractUpgrade upgrade){

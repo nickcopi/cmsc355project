@@ -34,6 +34,8 @@ public class HarvestableManager implements Serializable {
             if(PhysicsManager.collides(item,player)){
                 this.removePlant(item);
                 player.incrementItems();
+                if(Math.random() < player.getUpgradeManager().getHarvestUpgrade().getBonus())
+                    player.incrementItems();
                 if(this.plants.size() == 0) this.regenerate();
             }
         }
