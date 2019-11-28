@@ -4,7 +4,6 @@ public class SalesUpgrade extends AbstractUpgrade
 {
     public SalesUpgrade(){
         super(0.75,"Sales","Items sell for");
-        this.lockValue = 3;
     }
     @Override
     public double getBonus(int level) {
