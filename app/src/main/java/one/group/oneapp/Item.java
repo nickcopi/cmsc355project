@@ -12,7 +12,7 @@ public abstract class Item  implements Serializable {
         this.count = 0;
     }
     public final void sell(Wallet wallet, int maxSell, int multiplier){
-        int amountToSell = (this.cost > maxSell)?maxSell:this.count;
+        int amountToSell = (this.count > maxSell)?maxSell:this.count;
         wallet.addMoney(Math.round(this.cost*amountToSell*multiplier));
         this.count -= amountToSell;
     }
