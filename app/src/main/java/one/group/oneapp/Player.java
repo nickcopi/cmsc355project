@@ -4,8 +4,11 @@ package one.group.oneapp;
 //import android.view.MotionEvent;
 //import android.widget.ImageView;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 
 public class Player implements Collidable, Serializable //GestureDetector.OnGestureListener
@@ -23,6 +26,8 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 //    private int screenHeight;
 
     private int x,y,width,height;
+
+    private static final int BASE_STACK = 5;
 
     private boolean frozen;
 
@@ -131,7 +136,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
     }
 
     public void sell(){
-        items.get(0).sell(wallet,5,1);
+        items.get(0).sell(wallet,this.getMaxStack(),this.getSellMultiplier());
     }
 
     public UpgradeManager getUpgradeManager() {
@@ -140,6 +145,14 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     public void setDirection(Directions direction) {
         this.direction = direction;
+    }
+
+    private int getMaxStack(){
+        /*For selling, not for items*/
+        return (int)(BASE_STACK + Math.round(BASE_STACK * (this.upgradeManager.getSalesUpgrade().getBonus() * 5)));
+    }
+    private double getSellMultiplier(){
+        return this.upgradeManager.getSalesUpgrade().getBonus() + 1;
     }
 
 //    //Methods needed by GestureDetector

@@ -58,6 +58,7 @@ public class UpgradeMenu extends Activity {
         sizeTextView = (TextView) findViewById(R.id.SizeTextView);
 
         salesButton = (Button) findViewById(R.id.SalesButton);
+        salesTextView = (TextView) findViewById(R.id.SalesTextView);
 
         autoMoveButton = (Button) findViewById(R.id.AutomoveButton);
 
@@ -81,6 +82,10 @@ public class UpgradeMenu extends Activity {
         harvestButton.setText(getName(harvestUpgrade));
         harvestTextView.setText(harvestUpgrade.getDescription());
 
+        SalesUpgrade salesUpgrade = upgradeManager.getSalesUpgrade();
+        salesButton.setText(getName(salesUpgrade));
+        salesTextView.setText(salesUpgrade.getDescription());
+
 
         money.setText("$" + wallet.getMoney());
     }
@@ -94,7 +99,7 @@ public class UpgradeMenu extends Activity {
 
 
     public String getName(AbstractUpgrade upgrade){
-        return upgrade.getName() + " " + upgrade.getLevel();
+        return upgrade.getName() + " " + (upgrade.getLevel() + 1);
     }
 
     public void clickSize(View view){
@@ -106,6 +111,9 @@ public class UpgradeMenu extends Activity {
 
     public void clickHarvest(View view){
         buyUpgrade(upgradeManager.getHarvestUpgrade());
+    }
+    public void clickSales(View view){
+        buyUpgrade(upgradeManager.getSalesUpgrade());
     }
 
     public void buyUpgrade(AbstractUpgrade upgrade){

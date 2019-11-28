@@ -11,9 +11,9 @@ public abstract class Item  implements Serializable {
         this.cost = cost;
         this.count = 0;
     }
-    public final void sell(Wallet wallet, int maxSell, int multiplier){
+    public final void sell(Wallet wallet, int maxSell, double multiplier){
         int amountToSell = (this.count > maxSell)?maxSell:this.count;
-        wallet.addMoney(Math.round(this.cost*amountToSell*multiplier));
+        wallet.addMoney((int) Math.round(this.cost*amountToSell*multiplier));
         this.count -= amountToSell;
     }
 

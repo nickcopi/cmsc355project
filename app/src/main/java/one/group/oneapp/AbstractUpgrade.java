@@ -14,7 +14,7 @@ public abstract class AbstractUpgrade implements Serializable
 
     AbstractUpgrade(double baseCost, String name, String description) {
         this.baseCost = baseCost;
-        this.level = 1;
+        this.level = 0;
         this.name = name;
         this.description = description;
         this.lockValue = -1;
