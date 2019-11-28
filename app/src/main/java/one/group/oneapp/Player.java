@@ -29,7 +29,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     private static final int BASE_STACK = 5;
 
-    private boolean frozen;
+    private boolean frozen, autoMoving;
 
     private Wallet wallet;
     private ArrayList<Item> items;
@@ -53,6 +53,7 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         this.wallet = new Wallet();
         this.direction = Directions.LEFT;
         this.upgradeManager = new UpgradeManager();
+        this.autoMoving = false;
     }
 
     public void clearItems(){
@@ -80,6 +81,14 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         if(this.y < PhysicsManager.minY) this.y = PhysicsManager.minY;
         if(this.x + this.getWidth() > PhysicsManager.maxX) this.x = PhysicsManager.maxX - this.getWidth();
         if(this.y + this.getHeight() > PhysicsManager.maxY) this.y = PhysicsManager.maxY - this.getHeight();
+    }
+
+    public boolean canAutoMove(){
+        return upgradeManager.getMoveUpgrade().getLevel() != 0;
+    }
+
+    public boolean isAutoMoving() {
+        return autoMoving;
     }
 
     public int getX() {

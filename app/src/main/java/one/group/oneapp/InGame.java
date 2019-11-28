@@ -32,6 +32,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     public Paint black;
     private TextView sellView;
     private TextView moneyView;
+    private TextView autoMoveView;
+
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
     private Game game = new Game();
@@ -54,6 +56,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
         sellView = ((TextView)findViewById(R.id.sell));
         moneyView = ((TextView)findViewById(R.id.money));
+        autoMoveView = ((TextView)findViewById(R.id.automove));
 
 
 
@@ -103,6 +106,15 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     public void updateViews(){
         sellView.setText("Sell " + game.getPlayer().getItems() + " items");
         moneyView.setText("$" + game.getPlayer().getMoney());
+        String autoMoveText = "Automove: ";
+        if(getPlayer().canAutoMove()){
+            if(getPlayer().isAutoMoving())
+                autoMoveText += "On";
+            else
+                autoMoveText += "Off";
+        }
+        else autoMoveText += "Locked";
+        autoMoveView.setText(autoMoveText);
     }
 
     public HarvestableManager getHarvestableManager() {

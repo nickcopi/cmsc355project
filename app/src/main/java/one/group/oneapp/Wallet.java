@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Wallet implements Serializable {
     private  int money;
     public Wallet(){
-        this.money = 0;
+        this.money = 100000;
     }
 
     public int getMoney() {
