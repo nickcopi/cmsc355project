@@ -147,11 +147,11 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         this.direction = direction;
     }
 
-    private int getMaxStack(){
+    public int getMaxStack(){
         /*For selling, not for items*/
         return (int)(BASE_STACK + Math.round(BASE_STACK * (this.upgradeManager.getSalesUpgrade().getBonus() * 5)));
     }
-    private double getSellMultiplier(){
+    public double getSellMultiplier(){
         return this.upgradeManager.getSalesUpgrade().getBonus() + 1;
     }
 

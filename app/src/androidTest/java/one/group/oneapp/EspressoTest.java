@@ -405,6 +405,49 @@ public class EspressoTest {
 
 
 
+//As a player trying to make money, I want to be able to purchase sales upgrades, so that I can sell more items at once for more profit.
+
+    //Given I press the sales upgrade when I have money then my maximum sell amount increases by the upgrades amount.
+    @Test
+    public void testSalesUpgradePrice() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        double oldMultiplier = ingame.getPlayer().getSellMultiplier();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SalesButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true, oldMultiplier < ingame.getPlayer().getSellMultiplier());
+    }
+
+    //Given I press the sales upgrade when I have money then my sell bonus increases by the upgrades amount.
+    @Test
+    public void testSalesUpgradeAmount() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        int oldMax = ingame.getPlayer().getMaxStack();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SalesButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true, oldMax < ingame.getPlayer().getMaxStack());
+    }
+
+    //Given I press the sales upgrade when I haven't enough money then nothing happens.
+    @Test
+    public void testNoSalesUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        double oldMultiplier = ingame.getPlayer().getSellMultiplier();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SalesButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(true, oldMultiplier == ingame.getPlayer().getSellMultiplier());
+    }
+
+
+
+
 
 
 
