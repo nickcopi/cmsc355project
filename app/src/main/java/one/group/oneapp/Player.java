@@ -63,6 +63,9 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
 
     public void move(){
         if(frozen) return;
+        if(this.autoMoving && Math.random() < 0.02){
+            this.doAutoMove();
+        }
         switch(this.direction){
             case LEFT:
                 this.x += this.getSpeed() * -1;
@@ -77,18 +80,41 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
                 this.y += this.getSpeed();
                 break;
         }
-        if(this.x < PhysicsManager.minX) this.x = PhysicsManager.minX;
-        if(this.y < PhysicsManager.minY) this.y = PhysicsManager.minY;
-        if(this.x + this.getWidth() > PhysicsManager.maxX) this.x = PhysicsManager.maxX - this.getWidth();
-        if(this.y + this.getHeight() > PhysicsManager.maxY) this.y = PhysicsManager.maxY - this.getHeight();
+        Boolean hitWall = false;
+        if(this.x < PhysicsManager.minX){
+            this.x = PhysicsManager.minX;
+            hitWall = true;
+        }
+        if(this.y < PhysicsManager.minY){
+            this.y = PhysicsManager.minY;
+            hitWall = true;
+        }
+        if(this.x + this.getWidth() > PhysicsManager.maxX){
+            this.x = PhysicsManager.maxX - this.getWidth();
+            hitWall = true;
+        }
+        if(this.y + this.getHeight() > PhysicsManager.maxY){
+            this.y = PhysicsManager.maxY - this.getHeight();
+            hitWall = true;
+        }
+        if(this.autoMoving && hitWall){
+            this.doAutoMove();
+        }
     }
 
     public boolean canAutoMove(){
         return upgradeManager.getMoveUpgrade().getLevel() != 0;
     }
 
+    void doAutoMove() {
+        this.direction = Directions.values()[(int) Math.floor(Math.random() * Directions.values().length)];
+    }
     public boolean isAutoMoving() {
         return autoMoving;
+    }
+
+    public boolean toggleAutoMoving(){
+        return this.autoMoving = !this.autoMoving;
     }
 
     public int getX() {

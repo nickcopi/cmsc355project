@@ -103,6 +103,12 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         game.getPlayer().sell();
     }
 
+    public void clickAutoMove(View view){
+        if(getPlayer().canAutoMove()){
+            getPlayer().toggleAutoMoving();
+        }
+    }
+
     public void updateViews(){
         sellView.setText("Sell " + game.getPlayer().getItems() + " items");
         moneyView.setText("$" + game.getPlayer().getMoney());

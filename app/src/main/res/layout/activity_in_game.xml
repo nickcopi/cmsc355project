@@ -64,6 +64,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/automove"
         android:layout_width="wrap_content"
@@ -72,6 +73,7 @@
         android:layout_marginBottom="40dp"
         android:background="@android:drawable/divider_horizontal_textfield"
         android:fontFamily="monospace"
+        android:onClick="clickAutoMove"
         android:text="Automove: Locked"
         android:textAlignment="center"
         android:textColor="#2EFF00"
