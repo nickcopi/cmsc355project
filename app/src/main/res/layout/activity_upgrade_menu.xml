@@ -68,6 +68,7 @@
         android:layout_marginTop="72dp"
         android:background="#FC000000"
         android:fontFamily="monospace"
+        android:onClick="clickMove"
         android:text="Automove"
         android:textColor="#2EFF00"
         android:textSize="18sp"

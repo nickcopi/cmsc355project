@@ -61,6 +61,7 @@ public class UpgradeMenu extends Activity {
         salesTextView = (TextView) findViewById(R.id.SalesTextView);
 
         autoMoveButton = (Button) findViewById(R.id.AutomoveButton);
+        autoMoveTextView = (TextView) findViewById(R.id.AutomoveTextView);
 
         wallet = (Wallet) getIntent().getSerializableExtra("wallet");
         upgradeManager = (UpgradeManager) getIntent().getSerializableExtra("upgradeManager");
@@ -86,6 +87,10 @@ public class UpgradeMenu extends Activity {
         salesButton.setText(getName(salesUpgrade));
         salesTextView.setText(salesUpgrade.getDescription());
 
+        MoveUpgrade moveUpgrade = upgradeManager.getMoveUpgrade();
+        autoMoveButton.setText(getName(moveUpgrade));
+        autoMoveTextView.setText(moveUpgrade.getDescription());
+
 
         money.setText("$" + wallet.getMoney());
     }
@@ -99,6 +104,9 @@ public class UpgradeMenu extends Activity {
 
 
     public String getName(AbstractUpgrade upgrade){
+        if(upgrade.isLocked()){
+            return upgrade.getName();
+        }
         return upgrade.getName() + " " + (upgrade.getLevel() + 1);
     }
 
@@ -114,6 +122,10 @@ public class UpgradeMenu extends Activity {
     }
     public void clickSales(View view){
         buyUpgrade(upgradeManager.getSalesUpgrade());
+    }
+
+    public void clickMove(View view){
+        buyUpgrade(upgradeManager.getMoveUpgrade());
     }
 
     public void buyUpgrade(AbstractUpgrade upgrade){

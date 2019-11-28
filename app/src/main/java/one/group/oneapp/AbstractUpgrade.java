@@ -64,6 +64,15 @@ public abstract class AbstractUpgrade implements Serializable
     }
 
     public String getDescription() {
-        return getText() + " $" + getCost();
+        String text = getText();
+        if(this.locked)
+            text += " Locked.";
+        else
+            text += " $" + getCost();
+        return text;
+    }
+
+    public boolean isLocked() {
+        return locked;
     }
 }

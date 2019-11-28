@@ -7,13 +7,16 @@ public class UpgradeManager implements Serializable {
     private SizeUpgrade sizeUpgrade;
     private HarvestUpgrade harvestUpgrade;
     private SalesUpgrade salesUpgrade;
-    private AbstractUpgrade upgrades[] = {speedUpgrade,sizeUpgrade,harvestUpgrade, salesUpgrade};
+    private MoveUpgrade moveUpgrade;
+
+    private AbstractUpgrade upgrades[] = {speedUpgrade,sizeUpgrade,harvestUpgrade, salesUpgrade, moveUpgrade};
 
     public UpgradeManager(){
         this.speedUpgrade = new SpeedUpgrade();
         this.sizeUpgrade = new SizeUpgrade();
         this.harvestUpgrade = new HarvestUpgrade();
         this.salesUpgrade = new SalesUpgrade();
+        this.moveUpgrade = new MoveUpgrade();
 
     }
 
@@ -31,5 +34,9 @@ public class UpgradeManager implements Serializable {
 
     public SalesUpgrade getSalesUpgrade() {
         return salesUpgrade;
+    }
+
+    public MoveUpgrade getMoveUpgrade() {
+        return moveUpgrade;
     }
 }
