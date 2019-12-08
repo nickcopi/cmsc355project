@@ -491,7 +491,46 @@ public class EspressoTest {
         assertEquals(ingame.getPlayer().getMoney(), oldMoney);
     }
 
+//As a player I want to be able to move between the ingame and upgrade menu without money or upgrades disappearing so that I can play more effectively
 
+    //Given I return to the ingame menu from the upgrade menu when I have spent no money then my money will remain the same.
+    @Test
+    public void testMenuSyncNoBuy() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        onView(withId(R.id.upgrade)).perform(click());
+       // onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().getMoney(), 10000);
+    }
+
+
+    //Given I return to the ingame menu from the upgrade menu when I have spent money then my money will be updated.
+    @Test
+    public void testMenuSyncBuy() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        int oldMoney = ingame.getPlayer().getMoney() - ingame.getPlayer().getUpgradeManager().getMoveUpgrade().getCost();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().getMoney(), oldMoney);
+    }
+
+    //Given I return to the ingame menu from the upgrade menu when I have purchased an upgrade then the upgrade will remain purchased.
+    @Test
+    public void testMenuSyncBuyUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        int oldLevel = ingame.getPlayer().getUpgradeManager().getSpeedUpgrade().getLevel();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.SpeedButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().getUpgradeManager().getSpeedUpgrade().getLevel(), oldLevel + 1);
+    }
 
 
 
