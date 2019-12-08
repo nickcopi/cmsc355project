@@ -1,20 +1,26 @@
 package one.group.oneapp;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Game implements Serializable {
     private HarvestableManager harvestableManager;
     private Player player;
+    private int frame;
 
     public  Game(){
         harvestableManager = new HarvestableManager();
         player = new Player();
+        this.frame = 0;
     }
 
     public Player getPlayer() {
@@ -22,6 +28,9 @@ public class Game implements Serializable {
     }
 
     public void update(){
+        this.frame++;
+        if(this.frame % 60 == 0)
+            this.save();
         player.move();
         harvestableManager.collidePlayer(player);
 
@@ -60,5 +69,18 @@ public class Game implements Serializable {
 
         }
 
+    }
+
+    public void save(){
+        try{
+            FileOutputStream fos = InGame.context.getApplicationContext().openFileOutput("game.data", Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(this);
+            os.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 }

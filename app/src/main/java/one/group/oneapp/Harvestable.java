@@ -1,6 +1,8 @@
 package one.group.oneapp;
 
-public abstract class Harvestable implements Collidable {
+import java.io.Serializable;
+
+public abstract class Harvestable implements Collidable, Serializable {
     private int x;
     private int y;
     private int width;

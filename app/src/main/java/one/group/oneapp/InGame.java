@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
@@ -22,6 +23,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -36,7 +39,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
 
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
-    private Game game = new Game();
+    private Game game;
+    public static Context context;
 
     SurfaceView mSurfaceView;
     String TAG = "InGame";
@@ -57,7 +61,9 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         sellView = ((TextView)findViewById(R.id.sell));
         moneyView = ((TextView)findViewById(R.id.money));
         autoMoveView = ((TextView)findViewById(R.id.automove));
-
+        this.context = getApplicationContext();
+        game = new Game();
+        loadGame();
 
 
         //get a generic surface and all our callbacks to it, with a touchlistener.
@@ -95,6 +101,19 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         startActivityForResult(intent, UPGRADE_MENU);
 
 
+    }
+
+    private void loadGame(){
+        try{
+            FileInputStream fis = getApplicationContext().openFileInput("game.data");
+            ObjectInputStream is = new ObjectInputStream(fis);
+            Game game = (Game) is.readObject();
+            is.close();
+            fis.close();
+            this.game = game;
+        }catch (Exception e){
+            Log.e("#Load", "creating new game - \n" + e.toString());
+        }
     }
 
     public void clickSell(View view){
