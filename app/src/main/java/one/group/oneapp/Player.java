@@ -125,6 +125,14 @@ public class Player implements Collidable, Serializable //GestureDetector.OnGest
         return y;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public int getWidth() {
         return (int)Math.round(width + width * this.upgradeManager.getSizeUpgrade().getBonus());
     }

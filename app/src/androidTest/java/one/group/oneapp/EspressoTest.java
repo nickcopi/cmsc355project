@@ -119,6 +119,8 @@ public class EspressoTest {
     public void testMoveUp() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setX(250);
+        ingame.getPlayer().setY(700);
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(), ingame.getPlayer().getY() - 100));
         assertEquals(Player.Directions.UP, ingame.getPlayer().getDirection());
     }
