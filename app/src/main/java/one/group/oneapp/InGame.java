@@ -80,6 +80,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 int touchx = (int) event.getX();
                 int touchy = (int) event.getY();
                 game.doTouch(touchx,touchy);
+                v.performClick();
                 return true;
             }
 
@@ -145,8 +146,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     }
 
     public void updateViews(){
-        sellView.setText("Sell " + game.getPlayer().getItems() + " items");
-        moneyView.setText("$" + game.getPlayer().getMoney());
+        sellView.setText(getString(R.string.sellText,game.getPlayer().getItems()));
+        moneyView.setText(getString(R.string.dollarMoney,  game.getPlayer().getMoney()));
         String autoMoveText = "Automove: ";
         if(getPlayer().canAutoMove()){
             if(getPlayer().isAutoMoving())

@@ -92,7 +92,7 @@ public class UpgradeMenu extends Activity {
         autoMoveTextView.setText(moveUpgrade.getDescription());
 
 
-        money.setText("$" + wallet.getMoney());
+        money.setText(getString(R.string.dollarMoney, wallet.getMoney()));
     }
     public void clickBack(View view) {
         Intent result = new Intent();
