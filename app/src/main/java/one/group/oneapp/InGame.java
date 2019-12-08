@@ -24,7 +24,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -40,7 +43,7 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
     private int height = 480, width = 480;  //defaults incase not set yet.
     float scale;
     private Game game;
-    public static Context context;
+    public Context context;
 
     SurfaceView mSurfaceView;
     String TAG = "InGame";
@@ -101,6 +104,19 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         startActivityForResult(intent, UPGRADE_MENU);
 
 
+    }
+
+    private void saveGame() {
+        try{
+            FileOutputStream fos = this.context.getApplicationContext().openFileOutput("game.data", Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(game);
+            os.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 
     private void loadGame(){
@@ -235,6 +251,8 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
                 }
                 //handle the game updates
                 game.update();
+                if(game.getFrame() % 60 == 0)
+                    saveGame();
                 runOnUiThread(new Runnable() {
 
                     @Override

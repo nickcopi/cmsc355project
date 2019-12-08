@@ -29,8 +29,6 @@ public class Game implements Serializable {
 
     public void update(){
         this.frame++;
-        if(this.frame % 60 == 0)
-            this.save();
         player.move();
         harvestableManager.collidePlayer(player);
 
@@ -71,16 +69,7 @@ public class Game implements Serializable {
 
     }
 
-    public void save(){
-        try{
-            FileOutputStream fos = InGame.context.getApplicationContext().openFileOutput("game.data", Context.MODE_PRIVATE);
-            ObjectOutputStream os = new ObjectOutputStream(fos);
-            os.writeObject(this);
-            os.close();
-            fos.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
+    public int getFrame() {
+        return frame;
     }
 }
