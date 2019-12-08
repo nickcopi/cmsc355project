@@ -43,9 +43,10 @@ public class TimerUpgrade extends AbstractUpgrade
 
     @Override
     public String getText() {
-        return String.format("%s by %d%",
+        /*return String.format("%s by %d%",
                 this.description,
-                Math.round(this.getBonus(this.level+1)*100));
+                Math.round(this.getBonus(this.level+1)*100));*/
+        return "unused";
     }
 
 }
