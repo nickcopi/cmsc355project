@@ -446,6 +446,50 @@ public class EspressoTest {
     }
 
 
+//As a player that wants to make more money with less effort I want to be able to be able to unlock an auto move upgrade so that I can make money while not interacting with the game directly.
+
+
+
+    //Given I press the unlock button for the upgrade when I can afford it then I unlock it.
+    @Test
+    public void testAutoMoveUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().canAutoMove(), true);
+    }
+
+
+
+    //Given I press the unlock button for the upgrade when I can't afford it then nothing happens.
+    @Test
+    public void testNoAutoMoveUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        //ingame.getPlayer().getWallet().addMoney(10000);
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().canAutoMove(), false);
+    }
+
+
+    //Given I press the unlock button for the upgrade when I already have it then nothing happens.
+    @Test
+    public void testAutoMoveLockedUpgrade() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        int oldMoney = ingame.getPlayer().getMoney() - ingame.getPlayer().getUpgradeManager().getMoveUpgrade().getCost();
+        onView(withId(R.id.upgrade)).perform(click());
+        onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.AutomoveButton)).perform(click());
+        onView(withId(R.id.back)).perform(click());
+        assertEquals(ingame.getPlayer().getMoney(), oldMoney);
+    }
 
 
 
