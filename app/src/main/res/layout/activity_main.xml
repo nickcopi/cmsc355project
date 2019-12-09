@@ -13,7 +13,7 @@
 
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="124dp"
         android:layout_marginBottom="134dp"
         android:fontFamily="monospace"
@@ -26,7 +26,7 @@
         android:id="@+id/play"
         android:layout_width="70dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="170dp"
+        android:layout_marginStart="170dp"
         android:layout_marginTop="297dp"
         android:layout_marginBottom="134dp"
         android:fontFamily="monospace"

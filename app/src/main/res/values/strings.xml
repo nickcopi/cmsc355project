@@ -2,4 +2,6 @@
     <string name="app_name">oneapp</string>
     <string name="sellText">Sell %d items</string>
     <string name="dollarMoney">$%d</string>
+    <string name="upgrade_menu">Upgrade Menu</string>
+    <string name="sell">Sell</string>
 </resources>
