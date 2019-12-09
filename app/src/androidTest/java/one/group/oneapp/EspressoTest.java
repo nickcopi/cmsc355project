@@ -92,6 +92,8 @@ public class EspressoTest {
     public void testMoveRight() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setX(250);
+        ingame.getPlayer().setY(700);
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX() + 100, ingame.getPlayer().getY()));
         assertEquals(Player.Directions.RIGHT, ingame.getPlayer().getDirection());
     }
@@ -101,6 +103,8 @@ public class EspressoTest {
     public void testMoveLeft() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setX(250);
+        ingame.getPlayer().setY(700);
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX() - 100, ingame.getPlayer().getY()));
         assertEquals(Player.Directions.LEFT, ingame.getPlayer().getDirection());
     }
@@ -110,6 +114,8 @@ public class EspressoTest {
     public void testMoveDown() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().setX(250);
+        ingame.getPlayer().setY(700);
         onView(withId(R.id.surfaceView)).perform(touchDownAndUp(ingame.getPlayer().getX(), ingame.getPlayer().getY() + 100));
         assertEquals(Player.Directions.DOWN, ingame.getPlayer().getDirection());
     }
