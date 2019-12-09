@@ -1,7 +1,6 @@
 package one.group.oneapp;
 
 import android.app.Activity;
-import android.view.View;
 import android.widget.Chronometer;
 
 import static android.view.View.VISIBLE;

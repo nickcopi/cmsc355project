@@ -1,14 +1,8 @@
 package one.group.oneapp;
 
-//import android.view.GestureDetector;
-//import android.view.MotionEvent;
-//import android.widget.ImageView;
-
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+
 
 
 public class Player implements Collidable, Serializable //GestureDetector.OnGestureListener

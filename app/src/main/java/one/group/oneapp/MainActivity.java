@@ -1,13 +1,11 @@
 package one.group.oneapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.view.WindowManager;
-import android.widget.ImageView;
+
 
 
 public class MainActivity extends Activity {
