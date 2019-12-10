@@ -32,6 +32,6 @@ public class MainActivity extends Activity {
         File file = new File(dir, "game.data");
         boolean deleted = file.delete();
         TextView reset = (TextView) view;
-        if(deleted) reset.setText("Deleted!");
+        if(deleted) reset.setText(getString(R.string.deleted));
     }
 }

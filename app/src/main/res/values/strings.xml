@@ -4,4 +4,11 @@
     <string name="dollarMoney">$%d</string>
     <string name="upgrade_menu">Upgrade Menu</string>
     <string name="sell">Sell</string>
+    <string name="deleted">Deleted!</string>
+    <string name="start_money">$0</string>
+    <string name="automove_default">Automove: Locked</string>
+    <string name="title">Timewaster X-X-Treme</string>
+    <string name="play">Play Game</string>
+    <string name="reset">Reset</string>
+    <string name="back">Back</string>
 </resources>

@@ -17,7 +17,7 @@
         android:layout_marginTop="124dp"
         android:layout_marginBottom="134dp"
         android:fontFamily="monospace"
-        android:text="Timewaster X-X-Treme"
+        android:text="@string/title"
         android:textColor="#41FF00"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -31,7 +31,7 @@
         android:layout_marginBottom="134dp"
         android:fontFamily="monospace"
         android:onClick="clickPlay"
-        android:text="Play Game"
+        android:text="@string/play"
         android:textColor="#41FF00"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -44,7 +44,7 @@
         android:layout_marginBottom="134dp"
         android:fontFamily="monospace"
         android:onClick="clickReset"
-        android:text="Reset"
+        android:text="@string/reset"
         android:textColor="#41FF00"
         android:textSize="12sp"
         android:textStyle="bold" />
