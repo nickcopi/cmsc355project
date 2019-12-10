@@ -34,4 +34,9 @@ public class MainActivity extends Activity {
         TextView reset = (TextView) view;
         if(deleted) reset.setText(getString(R.string.deleted));
     }
+    public void testDelete(){
+        File dir = getFilesDir();
+        File file = new File(dir, "game.data");
+        file.delete();
+    }
 }

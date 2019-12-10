@@ -13,6 +13,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -94,6 +96,12 @@ public class InGame extends Activity implements SurfaceHolder.Callback {
         startActivityForResult(intent, UPGRADE_MENU);
 
 
+    }
+
+    public void deleteSave(){
+        File dir = getFilesDir();
+        File file = new File(dir, "game.data");
+        file.delete();
     }
 
     private void saveGame() {

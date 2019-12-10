@@ -13,6 +13,7 @@ We implemented and wrotes tests for user stories:
 - As a player I want to be able to move between the ingame and upgrade menu without money or upgrades disappearing so that I can play more effectively.
 - As a player that wants to make more money with less effort I want to be able to be able to unlock an auto move upgrade so that I can make money while not interacting with the game directly.
 - As a player trying to make money, I want to be able to purchase sales upgrades, so that I can sell more items at once for more profit.
+- As a player I want to be able to use the automove ability I've unlocked so that I can collect things to sell.
 
 The following non user story issues were also implemented:
 - Make the linter not sad.

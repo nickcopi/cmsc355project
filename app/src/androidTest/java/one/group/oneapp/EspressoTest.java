@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.test.espresso.Espresso;
 
 import org.hamcrest.Matcher;
+import org.junit.Before;
 import org.junit.Rule;
 
 import androidx.test.espresso.UiController;
@@ -25,6 +26,7 @@ import org.junit.Test;
 
 import org.junit.runner.RunWith;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -48,6 +50,13 @@ public class EspressoTest {
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityRule =
             new ActivityScenarioRule<>(MainActivity.class);
+
+
+    @Before
+    public void deleteSave(){
+        MainActivity main = (MainActivity) getActivityInstance();
+        main.testDelete();
+    }
 
 
     /*
@@ -249,6 +258,7 @@ public class EspressoTest {
         //ingame.getPlayer().incrementItems();
         ingame.getPlayer().clearItems();
         ingame.getPlayer().setFrozen(true);
+        ingame.getPlayer().getWallet().setMoney(0);
         onView(withId(R.id.sell)).perform(click());
         assertEquals(0, ingame.getPlayer().getItems());
         assertEquals(0, ingame.getPlayer().getMoney());
@@ -506,7 +516,7 @@ public class EspressoTest {
     public void testMenuSyncNoBuy() {
         onView(withId(R.id.play)).perform(click());
         InGame ingame = (InGame) getActivityInstance();
-        ingame.getPlayer().getWallet().addMoney(10000);
+        ingame.getPlayer().getWallet().setMoney(10000);
         onView(withId(R.id.upgrade)).perform(click());
        // onView(withId(R.id.AutomoveButton)).perform(click());
         onView(withId(R.id.back)).perform(click());
@@ -539,6 +549,48 @@ public class EspressoTest {
         onView(withId(R.id.back)).perform(click());
         assertEquals(ingame.getPlayer().getUpgradeManager().getSpeedUpgrade().getLevel(), oldLevel + 1);
     }
+
+
+
+//As a player I want to be able to use the automove ability I've unlocked so that I can collect things to sell.
+
+    //Given I press the automove button when it is locked then nothing happens.
+    @Test
+    public void testAutoMoveLocked() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        //ingame.getPlayer().getWallet().addMoney(10000);
+        //ingame.getPlayer().getUpgradeManager().getMoveUpgrade().buy(ingame.getPlayer().getWallet());
+        //boolean automoving = ingame.getPlayer().isAutoMoving();
+        onView(withId(R.id.automove)).perform(click());
+        assertEquals(ingame.getPlayer().isAutoMoving(), false);
+    }
+
+    //Given I press the automove button when I have it unlocked and I am not automoving then I start automoving.
+    @Test
+    public void testAutoMoveOn() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        ingame.getPlayer().getUpgradeManager().getMoveUpgrade().buy(ingame.getPlayer().getWallet());
+        //boolean automoving = ingame.getPlayer().isAutoMoving();
+        onView(withId(R.id.automove)).perform(click());
+        assertEquals(ingame.getPlayer().isAutoMoving(), true);
+    }
+
+    //Given I press the automove button when I have it unlocked and I am automoving then I stop automoving.
+    @Test
+    public void testAutoMoveOff() {
+        onView(withId(R.id.play)).perform(click());
+        InGame ingame = (InGame) getActivityInstance();
+        ingame.getPlayer().getWallet().addMoney(10000);
+        ingame.getPlayer().getUpgradeManager().getMoveUpgrade().buy(ingame.getPlayer().getWallet());
+        //boolean automoving = ingame.getPlayer().isAutoMoving();
+        ingame.getPlayer().toggleAutoMoving();
+        onView(withId(R.id.automove)).perform(click());
+        assertEquals(ingame.getPlayer().isAutoMoving(), false);
+    }
+
 
 
 
