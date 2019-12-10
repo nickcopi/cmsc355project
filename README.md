@@ -4,6 +4,23 @@
 ## Note
 All of our tests are confirmed to pass on a virtual device with Pixel 2 API 27
 
+
+## Iteration Three
+
+During this iteration we did a color/theme and general UI overhaul and made everything look so much less terrible than last iteration and now have a consistent black and green color scheme. The sales and automove upgrades were implemented, as well as actually automoving and a button for it. An automatic save system was implemented as well, and the entire game object was made serializable.
+
+We implemented and wrotes tests for user stories:
+- As a player I want to be able to move between the ingame and upgrade menu without money or upgrades disappearing so that I can play more effectively.
+- As a player that wants to make more money with less effort I want to be able to be able to unlock an auto move upgrade so that I can make money while not interacting with the game directly.
+- As a player trying to make money, I want to be able to purchase sales upgrades, so that I can sell more items at once for more profit.
+
+The following non user story issues were also implemented:
+- Make the linter not sad.
+- Implement autosaving
+
+In making the linter happy, A LOT of changes were made and things improved, although in the end there was one warning that couldn't be defeated. There is a "Accessibility in Custom Views" warning it gives for the way the touch listener is added to the surface view. It wants the performClick method of the surface view to be overriden but even doing that didn't supress it so it is just staying as it is and doesn't seem like a big deal for the way our application functions.
+
+
 ## Iteration Two
 
 During this iteration we got done a lot of upgrade related and item selling work. The game structure was also refactored greatly so that there is now a game object and there aren't just a bunch of things slapped onto the ingame activity.
